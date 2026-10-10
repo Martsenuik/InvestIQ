@@ -1,0 +1,242 @@
+.auth-modal {
+background-color: white;
+    border-radius: 40px 40px 0 0;
+    padding: 32px 24px 40px 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-text-google {
+    color: #52555F;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0 0 16px 0;
+    padding: 0 20px;
+}
+
+.auth-btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 130px;
+    height: 40px;
+    margin: 0 auto 24px auto;
+    background-color: #f4f6fa;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    cursor: pointer;
+}
+
+.auth-icon-google {
+    width: 18px;
+    height: 18px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-label-email,
+.auth-label-password {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.autn-input-email,
+.auth-input-password {
+    width: 100%;
+    height: 52px;
+    background-color: #f4f6fa;
+    border: none;
+    border-radius: 16px;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #000000;
+    box-sizing: border-box;
+}
+
+.autn-input-email::placeholder,
+.auth-input-password::placeholder {
+    color: #a6abbd;
+}
+
+.auth-btn-log-in,
+.auth-btn-registration {
+    height: 48px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 48%;
+}
+
+.auth-btn-log-in {
+    background-color: #ee7d33;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(238, 125, 51, 0.3);
+}
+
+.auth-btn-registration {
+    background-color: #f4f6fa;
+    color: #1d1d1f;
+}
+
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.auth-btn-log-in {
+    display: inline-block;
+}
+
+.auth-form {
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.auth-btn-log-in {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.auth-btn-registration {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .auth-modal {
+        
+        border-radius: 30px;
+        padding: 40px;
+        width: 415px;
+        max-width: 100%;
+        box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.04);
+        flex-grow: 0;
+        margin: 0 auto;
+    }
+
+    .auth-text-google {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .auth-btn-google {
+        width: 130px;
+        height: 40px;
+        margin-bottom: 28px;
+    }
+
+    .auth-form::before {
+        margin-bottom: 24px;
+    }
+
+    .auth-label-email,
+    .auth-label-password {
+        margin-bottom: 24px;
+    }
+
+    .autn-input-email,
+    .auth-input-password {
+        height: 52px;
+        border-radius: 16px;
+    }
+
+    .auth-form {
+        padding-bottom: 64px;
+    }
+
+    .auth-btn-log-in,
+    .auth-btn-registration {
+        height: 48px;
+        border-radius: 24px;
+        width: 48%;
+    }
+}
+
+@media (min-width: 1025px) {
+    .auth-modal {
+        border-radius: 24px;
+        padding: 40px;
+        width: 390px;
+        max-width: 100%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        flex-grow: 0;
+        margin: 0;
+    }
+
+    .auth-text-google {
+        font-size: 13px;
+        text-align: left;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .auth-btn-google {
+        width: 100%;
+        height: 48px;
+        margin: 0 0 25px 0;
+        background-color: #ffffff;
+        border: 1px solid #e5e5ea;
+        border-radius: 12px;
+    }
+
+    .auth-form::before {
+        text-align: left;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .auth-label-email,
+    .auth-label-password {
+        margin-bottom: 20px;
+    }
+
+    .autn-input-email,
+    .auth-input-password {
+        height: 48px;
+        border-radius: 12px;
+        background-color: #f5f5f7;
+    }
+
+    .auth-form {
+        padding-bottom: 58px;
+    }
+
+    .auth-btn-log-in,
+    .auth-btn-registration {
+        height: 48px;
+        border-radius: 24px;
+        width: 48%;
+    }
+
+    .auth-btn-registration {
+        background-color: #f5f5f7;
+    }
+}
+
+

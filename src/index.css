@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+:root {
+  --color-primary: #FB7C2F;
+  --color-primary-light: #FFDAC0;
+  --color-bg: #F5F6FB;
+  --color-text-main: #000000;
+  --color-text-secondary: #52555F;
+  --color-white: #FFFFFF;
+  --color-border: #E0E0E0;
+  --font-main: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+select {
+  font-family: inherit;
+  outline: none;
+}

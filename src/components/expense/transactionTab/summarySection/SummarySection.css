@@ -1,0 +1,19 @@
+.summary-table { 
+    display: none;
+}
+
+.summary-header {}
+
+.summary-row {}
+
+.summary-month {}
+
+.summary-value {}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .summary-table {}
+}
+
+@media (min-width: 1025px) {
+    .summary-table {}
+}
