@@ -1,19 +1,48 @@
-.summary-table { 
-    display: none;
+.summary-wrapper {
+    background-color: #f6f7fb;
+    border-radius: 20px 20px 20px 20px;
+    overflow: hidden;
+    width: 100%;
 }
 
-.summary-header {}
+ ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-.summary-row {}
+.summary-title {
+    background-color: #f6f7fb;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px 0;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid #ffffff;
+}
 
-.summary-month {}
+.summary-lines {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-.summary-value {}
+.summary-line {
+    height: 38px;
+    background-color: #f6f7fb;
+    border-bottom: 2px solid #ffffff;
+}
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .summary-table {}
+    .summary-wrapper {
+        width: 280px;
+    }
 }
 
 @media (min-width: 1025px) {
-    .summary-table {}
+    .summary-wrapper {
+        width: 230px;
+    }
 }

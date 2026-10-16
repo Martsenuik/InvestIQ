@@ -1,27 +1,16 @@
-import "./SummarySection.css"
+import "./SummarySection.css";
 
 export const SummarySection = () => {
+  const emptyLines = Array(8).fill(null);
+
   return (
-    <table className="summary-table">
-      <thead>
-        <tr>
-          <th colSpan={2} className="summary-header">ЗВЕДЕННЯ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="summary-row">
-          <td className="summary-month">ЛИСТОПАД</td>
-          <td className="summary-value">10 000.00</td>
-        </tr>
-        <tr className="summary-row">
-          <td className="summary-month">ЖОВТЕНЬ</td>
-          <td className="summary-value">30 000.00</td>
-        </tr>
-        <tr className="summary-row">
-          <td className="summary-month">ВЕРЕСЕНЬ</td>
-          <td className="summary-value">30 000.00</td>
-        </tr>
-      </tbody>
-    </table>
+    <div className="summary-wrapper">
+      <div className="summary-title">зведення</div>
+      <ul className="summary-lines">
+        {emptyLines.map((_, index) => (
+          <li key={index} className="summary-line"></li>
+        ))}
+      </ul>
+    </div>
   );
 };

@@ -1,18 +1,17 @@
 import { TransactionTab } from "../../components/expense/transactionTab/TransactionTab"
-import chart from "../../images/icons/chart.svg"
+import"./Expense.css"
 
 
 export const ExpensesPage = () => {
     return (
-        <section>
-            <p>Баланс:</p>
-            <button>00.00 UAH</button> 
-            <button>Підтвердити</button>
+        <section className="expense">
+            <p className="expense-balance-p">Баланс:</p>
+            <button className="expense-balance-money">00.00 UAH</button> 
+            <button className="expense-succes-balance">Підтвердити</button>
 
-            <p>Перейти до розрахунків</p>
-            <img src={chart} alt="chart" />
 
-            <button>витрати</button>     <button>дохід</button>
+            <button className="expense-btn-outgg">витрати</button>
+            <button className="expense-btn-incmg">дохід</button>
             <TransactionTab/>
         </section>
     )

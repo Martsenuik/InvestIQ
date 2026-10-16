@@ -1,4 +1,5 @@
 import google from "../../images/icons/google.svg"
+import { useState } from "react"
 import "./AuthModal.css"
 
 export const AuthModal = () => {
@@ -13,7 +14,8 @@ export const AuthModal = () => {
                 <form className="auth-form">
                     <label className="auth-label-email">
                         Електронна пошта:
-                        <input className="autn-input-email" type="email" placeholder="your@email.com" />
+                        <input className="autn-input-email"
+                            type="email" placeholder="your@email.com" />
                     </label>
                     
                     <label className="auth-label-password">

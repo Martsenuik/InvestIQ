@@ -1,0 +1,42 @@
+.expense{
+    background-image: url("../../images/mobileBGexpense1.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover; 
+}
+
+.expense-balance-p{
+    color: #52555fb3;
+}
+
+.expense-balance-money{
+    border-radius: 20px;
+    border-color: white;
+    background-color: #F2F5FC;
+}
+
+.expense-succes-balance{
+    border-radius: 20px;
+        border-color: white;
+}
+
+.expense-btn-outgg{
+
+}
+
+.expense-btn-incmg{
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .expense {
+            background-image: url("../../images/tabletBGexpense.png");
+    }
+}
+
+@media (min-width: 1025px) {
+    .expense {
+        background-image: url("../../images/compBGexpense.png");
+    }
+}
+
