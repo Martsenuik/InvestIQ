@@ -1,7 +1,12 @@
+import { TransactionTab } from "../../components/expense/transactionTab/TransactionTab";
+
 export const IncomePage = () => {
     return (
         <section>
-            <h1>IncomePage</h1>
+             <div className="income-page">
+                <TransactionTab type="income" />
+                </div>
         </section>
     )
 }
+

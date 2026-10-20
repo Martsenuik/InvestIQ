@@ -3,19 +3,40 @@ import calculator from "../../../images/icons/calculator.svg";
 import { SummarySection } from "./summarySection/SummarySection";
 import { TransactionTable } from "./transactionTable/TransactionTable";
 import { categories } from "../../../data/categories";
-import "./TransactionTab.css";
+import basket from "../../../images/icons/basket.svg"
+import "./transactionTab.css"
 
-export const TransactionTab = () => {
+
+interface TransactionItem {
+    _id?: string;
+    id?: string;
+    description?: string;
+    date?: string;
+    category?: string;
+    amount: number;
+    type?: string;
+}
+
+interface TransactionTabProps {
+  type?: string;
+  activeTab?: string;
+  transactions?: any[];
+  onDelete?: (id: string) => void;
+}
+
+export const TransactionTab = ({ type, activeTab, onDelete, transactions }: TransactionTabProps) => {
+  const today = new Date().toLocaleDateString('uk-UA');
   return (
     <div className="transaction-tab-container">
       <div className="transaction-tab-1and2">
       <div className="form-wrapper">
                <div className="form-calendar-wrapper">
                  <img src={calendar} alt="calendar" className="form-calendar-icon" />
-                 <p className="form-calendar-date">21.11.2019</p>
+            <p className="form-calendar-date">{ today}</p>
                </div>
 
-               <div className="form-inputs-group">
+          <div className="form-inputs-group-ALL">
+             <div className="form-inputs-group">
                  <input type="text" placeholder="Опис товару" className="form-input-desc" />
                  
                  <select name="category" className="form-select-cat">
@@ -25,13 +46,48 @@ export const TransactionTab = () => {
                        {cat}
                      </option>
                    ))}
-                 </select>
-                 
+              </select>
+            </div>  
+             <div className="calculator-group">   
                  <div className="form-amount-wrapper">
-                   <input type="number" placeholder="0,00" className="form-input-amount" />
+                   <input type="number" placeholder="00.00 UAH" className="form-input-amount" />
                    <img src={calculator} alt="calculator" className="form-calc-icon" />
-                 </div>
+              </div>
+             </div>  
+          </div>
+          
+
+               <div className="mobile-list-view">
+                <ul className="mobile-transactions-list">
+                 {transactions && transactions.length > 0 && (
+                   transactions.map((item) => (
+                     <li key={item._id || item.id} className="mobile-transaction-item">
+                       <div className="mob-item-info">
+                         <span className="mob-item-title">{item.description}</span>
+                         <div className="mob-item-subinfo">
+                           <span className="mob-item-date">{item.date}</span>
+                           <span className="mob-item-cat">{item.category}</span>
+                         </div>
+                       </div>
+                       <div className="mob-item-right">
+                         <span className={`mob-item-sum ${item.amount < 0 ? 'red' : 'green'}`}>
+                           {item.amount} грн.
+                         </span>
+                         <button 
+                           className="mob-item-delete" 
+                           onClick={() => onDelete && onDelete(item._id || item.id || '')}
+                           aria-label="Видалити"
+                         >
+                           <img src={basket} alt="basket" />
+                         </button>
+                       </div>
+                     </li>
+                     ))
+                     )}
+                </ul>
                </div>
+
+          
 
                <div className="form-buttons-group">
                  <button className="form-btn-submit">ввести</button>
