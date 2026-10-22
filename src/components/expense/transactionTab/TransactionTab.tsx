@@ -14,7 +14,8 @@ interface TransactionItem {
     date?: string;
     category?: string;
     amount: number;
-    type?: string;
+  type?: string;
+  
 }
 
 interface TransactionTabProps {
@@ -22,18 +23,21 @@ interface TransactionTabProps {
   activeTab?: string;
   transactions?: any[];
   onDelete?: (id: string) => void;
+  hideDate?: boolean;
 }
 
-export const TransactionTab = ({ type, activeTab, onDelete, transactions }: TransactionTabProps) => {
+export const TransactionTab = ({ type, activeTab, onDelete, transactions, hideDate }: TransactionTabProps) => {
   const today = new Date().toLocaleDateString('uk-UA');
   return (
     <div className="transaction-tab-container">
       <div className="transaction-tab-1and2">
-      <div className="form-wrapper">
-               <div className="form-calendar-wrapper">
-                 <img src={calendar} alt="calendar" className="form-calendar-icon" />
-            <p className="form-calendar-date">{ today}</p>
-               </div>
+        <div className="form-wrapper">
+          {!hideDate && (
+            <div className="form-calendar-wrapper">
+              <img src={calendar} alt="calendar" className="form-calendar-icon" />
+              <p className="form-calendar-date">{today}</p>
+            </div>
+          )}
 
           <div className="form-inputs-group-ALL">
              <div className="form-inputs-group">

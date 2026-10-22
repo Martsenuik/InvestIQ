@@ -57,18 +57,20 @@ export const ExpensesPage = () => {
             )}
 
             <div className={`transaction-wrapper-mob ${mobileStep !== "welcome" ? "visible" : ""}`}>
-                <button onClick={() => setMobileStep('welcome')}>
+                <button className="btn-arrow" onClick={() => setMobileStep('welcome')}>
                     <img src={arrow} alt="arrow" />
                 </button>
                 <TransactionTab 
                     type={activeTab} 
                     transactions={transactions} 
                     onDelete={handleDelete} 
+                    hideDate={true}
                     
                 />
             </div>
 
-            <div className="expense-outANDinc-btn-box">
+            { mobileStep !== 'add-transaction' && (
+                <div className="expense-outANDinc-btn-box">
                 <button 
                     className={`expense-btn-outgg ${activeTab === 'outgoing' ? 'active' : ''}`}
                     onClick={() => setActiveTab('outgoing')}
@@ -81,7 +83,8 @@ export const ExpensesPage = () => {
                 >
                     дохід
                 </button>
-            </div>
+                </div>
+            )}
         </section>
     )
 }

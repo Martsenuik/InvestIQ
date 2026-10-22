@@ -18,12 +18,12 @@ function App() {
             fallback={<div className="loading">Завантаження сторінки...</div>}
           >
             <Header />
-                    {/* <nav >
+                    <nav >
         <Link to="/auth">Auth</Link>
         <Link to="/">Expenses</Link>
         <Link to="/income">Income</Link>
         <Link to="/reports">Reports</Link>
-      </nav> */}
+      </nav>
             <Routes>
               <Route path="/auth" element={<AuthPage />} />
               <Route path="/" element={<ExpensesPage />} />

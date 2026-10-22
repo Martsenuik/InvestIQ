@@ -3,6 +3,12 @@ import { useState } from "react"
 import "./AuthModal.css"
 
 export const AuthModal = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+    }
     return (
         <>
             <div className="auth-modal">
@@ -11,19 +17,27 @@ export const AuthModal = () => {
                     <img className="auth-icon-google" src={google} alt="google" />
                     Google
                 </button>
-                <form className="auth-form">
+                <form className="auth-form" onSubmit={handleSubmit}>
                     <label className="auth-label-email">
                         Електронна пошта:
-                        <input className="autn-input-email"
-                            type="email" placeholder="your@email.com" />
+                        <input
+                            className="auth-input-email"
+                            type="email"
+                            placeholder="your@email.com"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </label>
                     
                     <label className="auth-label-password">
                         Пароль:
-                        <input type="password" className="auth-input-password"/>
+                        <input
+                            type="password"
+                            className="auth-input-password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </label>
-                    <button className="auth-btn-log-in">УВІЙТИ</button>
-                    <button className="auth-btn-registration">РЕЄСТРАЦІЯ</button>
+                    <button className="auth-btn-log-in" type="submit">УВІЙТИ</button>
+                    <button className="auth-btn-registration" type="submit">РЕЄСТРАЦІЯ</button>
                 </form>
             </div>
         </>
