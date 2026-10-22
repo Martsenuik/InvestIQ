@@ -64,6 +64,7 @@ export const ExpensesPage = () => {
                     type={activeTab} 
                     transactions={transactions} 
                     onDelete={handleDelete} 
+                    
                 />
             </div>
 

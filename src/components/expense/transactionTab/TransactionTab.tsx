@@ -39,8 +39,8 @@ export const TransactionTab = ({ type, activeTab, onDelete, transactions }: Tran
              <div className="form-inputs-group">
                  <input type="text" placeholder="Опис товару" className="form-input-desc" />
                  
-                 <select name="category" className="form-select-cat">
-                   <option value="">Категорія товару</option>
+                 <select name="category" className="form-select-cat" required>
+                   <option value="" disabled selected hidden>Категорія товару</option>
                    {categories.map((cat) => (
                      <option key={cat} value={cat}>
                        {cat}

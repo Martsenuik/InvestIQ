@@ -58,6 +58,18 @@
   box-sizing: border-box;
 }
 
+.form-select-cat {
+  color: #a1a1a1;
+}
+
+.form-select-cat:valid {
+  color: #000000;
+}
+
+.form-select-cat option {
+  color: #52555f;
+}
+
 .form-input-desc{
   border-radius: 16px 16px 0 0;
 }

@@ -1,13 +1,14 @@
+
 .expense {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 20px 0;
     background-image: url("../../images/mobileBGexpense1.png");
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
+    overflow: hidden;
 }
 
 .expense-first-screen{
@@ -96,10 +97,21 @@
 
 .transaction-wrapper-mob{
     display: none;
+    flex: 1;
+}
+
+.transaction-wrapper-mob.visible {
+    display: flex;
+    flex-direction: column;
 }
 
 .transaction-wrapper-mob.visible {
     display: block;
+    background-image: url("../../images/mobileBGexpense2.png");
+        background-repeat: no-repeat;
+            background-position: center bottom;
+            background-size: cover;
+            min-height: 100vh;
 }
 
 .expense-outANDinc-btn-box{
@@ -108,6 +120,7 @@
     left: 0;
     width: 100%;
     display: flex;
+    margin-top: auto;
 }
 
 .expense-btn-outgg,
@@ -121,7 +134,7 @@
     flex:1;
 }
 
-.expense-btn-outgg,
+.expense-btn-outgg:active,
 .expense-btn-incmg:active {
      background-color: rgba(255, 117, 29, 1);
 }
