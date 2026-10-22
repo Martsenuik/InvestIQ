@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
+    background-image: url("./images/mobileBGexpense2.png");
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: cover;
 }
 
 .loading {

@@ -3,6 +3,7 @@ import diagram from '../../images/icons/diagram.svg'
 import "./Expense.css"
 import { useState } from "react"
 import arrow from '../../images/icons/arrow.svg'
+import { NavLink } from "react-router-dom"
 
 export const ExpensesPage = () => {
     const [mobileStep, setMobileStep] = useState('welcome')   
@@ -69,22 +70,24 @@ export const ExpensesPage = () => {
                 />
             </div>
 
-            { mobileStep !== 'add-transaction' && (
-                <div className="expense-outANDinc-btn-box">
-                <button 
-                    className={`expense-btn-outgg ${activeTab === 'outgoing' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('outgoing')}
-                >
-                    витрати
-                </button>
-                <button 
-                    className={`expense-btn-incmg ${activeTab === 'income' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('income')}
-                >
-                    дохід
-                </button>
-                </div>
-            )}
+ {mobileStep !== "add-transaction" && (
+        <div className="expense-outANDinc-btn-box">
+          <NavLink
+            to={"/transaction-tab"}
+            className={`expense-btn-outgg ${activeTab === "outgoing" ? "active" : ""}`}
+            onClick={() => setActiveTab("outgoing")}
+          >
+            витрати
+          </NavLink>
+          <NavLink
+            to={"/transaction-tab"}
+            className={`expense-btn-incmg ${activeTab === "income" ? "active" : ""}`}
+            onClick={() => setActiveTab("income")}
+          >
+            дохід
+          </NavLink>
+        </div>
+      )}
         </section>
     )
 }

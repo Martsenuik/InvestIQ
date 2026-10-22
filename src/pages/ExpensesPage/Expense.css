@@ -3,19 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    background-image: url("../../images/mobileBGexpense1.png");
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: cover;
-    overflow: hidden;
 }
 
 .expense-first-screen{
     position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
@@ -124,6 +118,7 @@
     width: 100%;
     display: flex;
     margin-top: auto;
+    text-align: center;
 }
 
 .expense-btn-outgg,

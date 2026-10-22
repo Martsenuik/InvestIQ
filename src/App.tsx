@@ -6,6 +6,7 @@ import { ExpensesPage } from "./pages/ExpensesPage/ExpensesPage";
 import { IncomePage } from "./pages/IncomePage/IncomePage"
 import { ReportsPage } from "./pages/ReportsPage/ReportsPage" 
 import { Header } from './components/header/Header';
+import { TransactionTab } from './components/expense/transactionTab/TransactionTab';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
               <Route path="/" element={<ExpensesPage />} />
               <Route path="/income" element={<IncomePage />}/>
               <Route path="/reports" element={<ReportsPage />} />
-        
+              <Route path="/transaction-tab" element={<TransactionTab />} />
             </Routes>
           </Suspense>
         </BrowserRouter>
