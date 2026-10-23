@@ -119,7 +119,13 @@ return (
 
 
         {mobileStep === 'main' && (
-           <div className="mobile-list-view">
+        <div className="mobile-list-view">
+          
+          <div className="form-calendar-wrapper" style={{ justifyContent: 'center', margin: '20px 0' }}>
+       <img src={calendar} alt="calendar" className="form-calendar-icon" />
+       <p className="form-calendar-date">{today}</p>
+          </div>
+          
              <ul className="mobile-transactions-list">
               {transactions && transactions.length > 0 && (
                 transactions.map((item) => (

@@ -35,7 +35,7 @@ export const ExpensesPage = () => {
     return (
         <section className="expense">
 
-            {mobileStep === 'welcome' && (
+            {mobileStep !== 'add-transaction' && (
                 <>
                     <div className="expense-first-screen"> 
                         <p className="expense-go-calcuations">
@@ -71,21 +71,21 @@ export const ExpensesPage = () => {
                     )}
                 </>
             )}
-
-            <div className={`transaction-wrapper-mob ${mobileStep !== "welcome" ? "visible" : ""}`}>
+            {mobileStep !== 'welcome' && (
+                <div className={`transaction-wrapper-mob ${mobileStep !== "welcome" ? "visible" : ""}`}>
                 
-                <TransactionTab 
-                    type={activeTab} 
-                    transactions={transactions} 
-                    onDelete={handleDelete} 
-                    hideDate={true}
-                    onBackWelc={() => setMobileStep('welcome')}
-                    onAddTransaction={handleAddTransaction}
-                    mobileStep={mobileStep}
-                    initialBalance={initialBalance}
-                />
-            </div>
-
+                    <TransactionTab
+                        type={activeTab}
+                        transactions={transactions}
+                        onDelete={handleDelete}
+                        hideDate={true}
+                        onBackWelc={() => setMobileStep('welcome')}
+                        onAddTransaction={handleAddTransaction}
+                        mobileStep={mobileStep}
+                        initialBalance={initialBalance}
+                    />
+                </div>
+            )}
  {mobileStep !== "add-transaction" && (
         <div className="expense-outANDinc-btn-box">
           <NavLink
