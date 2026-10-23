@@ -29,9 +29,10 @@ interface TransactionTabProps {
   onBackWelc?: () => void;
   onAddTransaction?: (transaction: { description: string; category: string; amount: number }) => void;
   mobileStep?: string;
+  initialBalance?: number;
 }
 
-export const TransactionTab = ({ type, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep }: TransactionTabProps) => {
+export const TransactionTab = ({ type, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep, initialBalance }: TransactionTabProps) => {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [amount, setAmount] = useState<string | number>('');
@@ -57,12 +58,10 @@ return (
     <div className="transaction-tab-container">
       <div className="transaction-tab-1and2">
         
-        {/* Кнопка назад */}
         <button className="btn-arrow" onClick={onBackWelc}>
             <img src={arrow} alt="arrow" />
         </button>
 
-        {/* 1. Форма вводу (показується тільки коли НЕ main) */}
         {mobileStep !== 'main' && (
           <div className="form-wrapper">
             {hideDate && (
@@ -118,7 +117,7 @@ return (
           </div>
         )}
 
-        {/* 2. Список транзакцій (показується ТІЛЬКИ коли mobileStep === 'main') */}
+
         {mobileStep === 'main' && (
            <div className="mobile-list-view">
              <ul className="mobile-transactions-list">

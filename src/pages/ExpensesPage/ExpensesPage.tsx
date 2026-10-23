@@ -82,6 +82,7 @@ export const ExpensesPage = () => {
                     onBackWelc={() => setMobileStep('welcome')}
                     onAddTransaction={handleAddTransaction}
                     mobileStep={mobileStep}
+                    initialBalance={initialBalance}
                 />
             </div>
 
