@@ -2,7 +2,7 @@ import { TransactionTab } from "../../components/expense/transactionTab/Transact
 import diagram from '../../images/icons/diagram.svg'
 import "./Expense.css"
 import { useState } from "react"
-import arrow from '../../images/icons/arrow.svg'
+
 import { NavLink } from "react-router-dom"
 
 export const ExpensesPage = () => {
@@ -11,11 +11,26 @@ export const ExpensesPage = () => {
     const [activeTab, setActiveTab] = useState('outgoing');
     // outgoing, income
     const [transactions, setTransactions] = useState<any[]>([]);
-    const [initialBalance, setInitialBalance] = useState(0)
+    const [initialBalance, setInitialBalance] = useState(0);
+
 
     const handleDelete = (id: string) => {
         setTransactions(prevTransactions => prevTransactions.filter(item => (item._id || item.id) !== id));
     };
+
+      const handleAddTransaction = (newTransactionData: { description: string; category: string; amount: number }) => {
+    const newTx = {
+      id: Date.now().toString(),
+      date: new Date().toLocaleDateString('uk-UA'),
+      description: newTransactionData.description,
+      category: newTransactionData.category,
+      amount: newTransactionData.amount,
+      type: activeTab, 
+    };
+
+    setTransactions(prev => [newTx, ...prev]);
+        setMobileStep('main')
+  };
 
     return (
         <section className="expense">
@@ -39,7 +54,7 @@ export const ExpensesPage = () => {
                             /> 
                             <button 
                                 className="expense-succes-balance" 
-                                onClick={() => setMobileStep('add-transaction')}
+                                // onClick={() => setMobileStep('add-transaction')}
                             >
                                 Підтвердити
                             </button>
@@ -58,15 +73,15 @@ export const ExpensesPage = () => {
             )}
 
             <div className={`transaction-wrapper-mob ${mobileStep !== "welcome" ? "visible" : ""}`}>
-                <button className="btn-arrow" onClick={() => setMobileStep('welcome')}>
-                    <img src={arrow} alt="arrow" />
-                </button>
+                
                 <TransactionTab 
                     type={activeTab} 
                     transactions={transactions} 
                     onDelete={handleDelete} 
                     hideDate={true}
-                    
+                    onBackWelc={() => setMobileStep('welcome')}
+                    onAddTransaction={handleAddTransaction}
+                    mobileStep={mobileStep}
                 />
             </div>
 
@@ -75,14 +90,22 @@ export const ExpensesPage = () => {
           <NavLink
             to={"/transaction-tab"}
             className={`expense-btn-outgg ${activeTab === "outgoing" ? "active" : ""}`}
-            onClick={() => setActiveTab("outgoing")}
+            onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("outgoing");
+            setMobileStep('add-transaction'); 
+        }}
           >
             витрати
           </NavLink>
           <NavLink
             to={"/transaction-tab"}
             className={`expense-btn-incmg ${activeTab === "income" ? "active" : ""}`}
-            onClick={() => setActiveTab("income")}
+            onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("income");
+            setMobileStep('add-transaction'); 
+        }}
           >
             дохід
           </NavLink>

@@ -19,3 +19,17 @@
   font-weight: 500;
   color: var(--color-primary);
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .section {
+    background-image: url("./images/tabletBGauth.png");
+  }
+
+}
+
+@media (min-width: 1025px) {
+  .section {
+  background-image: url("./images/compBGauth.png");
+  }
+
+}

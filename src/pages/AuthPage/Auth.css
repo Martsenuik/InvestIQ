@@ -1,13 +1,11 @@
 .auth {
-        background-image: url("../../images/mobileBG.png");
-            background-repeat: no-repeat;
-            background-position: center bottom;
-            background-size: cover;
+    background-image: url("../../images/mobileBG.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-
     padding: 40px 16px 0 16px;
     box-sizing: border-box;
     font-family: sans-serif;
@@ -43,7 +41,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        min-height: calc(100vh - 64px);
         padding: 40px 32px;
         gap: 0;
     }
