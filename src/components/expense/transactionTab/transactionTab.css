@@ -153,6 +153,49 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
+.mobile-transactions-list{
+
+}
+
+.mobile-transaction-item{
+    display: flex;
+    align-items: center;
+}
+
+.mob-item-info{
+
+}
+
+.mob-item-title{
+   font-weight: bold;
+   font-size: 13px;
+}
+
+.mob-item-subinfo{
+
+}
+.mob-item-date{
+   font-size: 10px
+}
+
+.mob-item-cat{
+    font-size: 10px;
+}
+
+.mob-item-right{
+
+}
+
+.mob-item-sum{
+      font-weight: bold;
+        font-size: 13px;
+}
+
+.mob-item-delete{
+   width: 18px;
+}
+
+
 .tables-display-flex {
   display: none !important;
   width: 100%;

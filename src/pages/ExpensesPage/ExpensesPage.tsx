@@ -13,6 +13,8 @@ export const ExpensesPage = () => {
     const [transactions, setTransactions] = useState<any[]>([]);
     const [initialBalance, setInitialBalance] = useState(0);
 
+    const totalBalance = initialBalance + transactions.reduce((acc, item) => acc + Number(item.amount), 0);
+
 
     const handleDelete = (id: string) => {
         setTransactions(prevTransactions => prevTransactions.filter(item => (item._id || item.id) !== id));
@@ -51,10 +53,12 @@ export const ExpensesPage = () => {
                                 className="expense-balance-money"
                                 placeholder="00.00 UAH"
                                 onChange={(e) => setInitialBalance(Number(e.target.value))} 
+                                readOnly={mobileStep === 'main'}
+                                value={mobileStep === 'main' ? totalBalance : (initialBalance === 0 ? '' : initialBalance)}
                             /> 
                             <button 
                                 className="expense-succes-balance" 
-                                // onClick={() => setMobileStep('add-transaction')}
+                                disabled={mobileStep === 'main'}
                             >
                                 Підтвердити
                             </button>

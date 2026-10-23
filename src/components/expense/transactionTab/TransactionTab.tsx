@@ -58,9 +58,11 @@ return (
     <div className="transaction-tab-container">
       <div className="transaction-tab-1and2">
         
+      {mobileStep === 'add-transaction' && (
         <button className="btn-arrow" onClick={onBackWelc}>
-            <img src={arrow} alt="arrow" />
+          <img src={arrow} alt="arrow" />
         </button>
+      )}
 
         {mobileStep !== 'main' && (
           <div className="form-wrapper">
