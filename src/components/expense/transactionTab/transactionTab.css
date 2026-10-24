@@ -154,16 +154,21 @@
 }
 
 .mobile-transactions-list{
-
+   width: 100%;
 }
 
 .mobile-transaction-item{
-    display: flex;
+  display: flex;
+    justify-content: space-between;
     align-items: center;
-}
+    width: 100%;
+    padding: 10px 0;
+  }
 
 .mob-item-info{
-
+    display: flex;
+      flex-direction: column;
+      gap: 4px;
 }
 
 .mob-item-title{
@@ -172,7 +177,8 @@
 }
 
 .mob-item-subinfo{
-
+    display: flex;
+    gap: 24px;
 }
 .mob-item-date{
    font-size: 10px
@@ -183,7 +189,8 @@
 }
 
 .mob-item-right{
-
+      display: flex;
+        gap: 5px;
 }
 
 .mob-item-sum{
