@@ -154,7 +154,14 @@
 }
 
 .mobile-transactions-list{
-   width: 100%;
+  max-height: 205px;
+    overflow-y: auto;
+    padding-right: 5px;
+    &::-webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
+      -ms-overflow-style: none;
 }
 
 .mobile-transaction-item{
@@ -163,6 +170,8 @@
     align-items: center;
     width: 100%;
     padding: 10px 0;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e5e5;
   }
 
 .mob-item-info{

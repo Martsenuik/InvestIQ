@@ -12,6 +12,7 @@ export const ExpensesPage = () => {
     // outgoing, income
     const [transactions, setTransactions] = useState<any[]>([]);
     const [initialBalance, setInitialBalance] = useState(0);
+    const [displayValue, setDisplayValue] = useState('')
 
     const totalBalance = initialBalance + transactions.reduce((acc, item) => acc + Number(item.amount), 0);
 
@@ -32,7 +33,18 @@ export const ExpensesPage = () => {
 
     setTransactions(prev => [newTx, ...prev]);
         setMobileStep('main')
-  };
+    };
+    
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const rawValue = e.target.value.replace(/\D/g, '');
+        if (!rawValue) {
+            setDisplayValue('');
+            return;
+        }
+        const formatted = Number(rawValue).toLocaleString('uk-UA');
+
+        setDisplayValue(formatted);
+    };
 
     return (
         <section className="expense">
@@ -49,13 +61,21 @@ export const ExpensesPage = () => {
                         <p className="expense-balance-p">Баланс:</p>
                         <div className="expense-balancce-box">
                             <input
-                                type="number"
+                                type="text"
                                 className="expense-balance-money"
                                 placeholder="00.00 UAH"
-                                onChange={(e) => setInitialBalance(Number(e.target.value))} 
+                                onChange={(e) => {
+                                    handleChange(e);
+                                    const rawValue = e.target.value.replace(/\s/g, '');
+                                    setInitialBalance(Number(rawValue) || 0);
+                                }}
                                 readOnly={mobileStep === 'main'}
-                                value={mobileStep === 'main' ? totalBalance : (initialBalance === 0 ? '' : initialBalance)}
-                            /> 
+                                value={
+                                    mobileStep === 'main' 
+                                        ? Number(totalBalance || 0).toLocaleString('uk-UA') 
+                                        : (initialBalance === 0 ? '' : initialBalance.toLocaleString('uk-UA'))
+                                }
+                            />
                             <button 
                                 className="expense-succes-balance" 
                                 disabled={mobileStep === 'main'}
