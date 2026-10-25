@@ -15,14 +15,15 @@
 .header>div {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .header-user-avatar {
-  display: none;
+
 }
 
 .header-logout-icon {
-display: none;
+
 }
 
 .header-logout-icon:hover {
@@ -30,11 +31,11 @@ display: none;
 }
 
 .header-p-user-name {
-    display: none;
+display: none;
 }
 
 .header-log-out {
-    display: none;
+display: none;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
