@@ -69,6 +69,20 @@ background-color: white;
     font-size: 14px;
     color: #000000;
     box-sizing: border-box;
+transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+.auth-input-email:focus{
+    box-shadow: 0 8px 24px rgb(255 125 0 / 82%);
+}
+.auth-input-password:focus {
+    box-shadow: 0 8px 24px rgb(255 125 0 / 82%);
+}
+
+.auth-input-password {
+    font-size: 30px;
+    letter-spacing: 4px;
 }
 
 .auth-input-email::placeholder,
@@ -87,6 +101,17 @@ background-color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     width: 48%;
+    transition: background-color 4s ease, box-shadow 4s ease, transform 4s ease;
+}
+
+.auth-btn-log-in:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+}
+
+.auth-btn-registration:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
 }
 
 .auth-btn-log-in {

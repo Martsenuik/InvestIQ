@@ -31,7 +31,7 @@ export const Header = () => {
     <section className='header'>
       
         <img src={logo} alt="logo" className='header-logo' />
-       <div>
+       <div className='header-right-box'>
       <img src={userAvatar} alt="userAvatar" className='header-user-avatar' />
         <img src={logout} alt="logout" className='header-logout-icon' onClick={handleOpenFirstModal} />
         
