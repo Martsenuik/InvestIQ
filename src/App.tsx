@@ -11,6 +11,7 @@ import type { ReactNode } from "react";
 
 
 function App() {
+  
   const isAuthenticated = () => {
     return Boolean(localStorage.getItem("userEmail"));
   };

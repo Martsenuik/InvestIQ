@@ -1,5 +1,5 @@
 import google from "../../images/icons/google.svg"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./AuthModal.css"
 import { useAppDispatch } from "../../redux/hooks" 
 import { logIn, register } from "../../redux/auth/authSlice"
@@ -12,6 +12,14 @@ export const AuthModal = () => {
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [allUsers, setAllUsers] = useState(() => {
+      const savedUsers = localStorage.getItem("allUsers");
+      return savedUsers ? JSON.parse(savedUsers) : [];
+    });
+
+    useEffect(() => {
+      localStorage.setItem("allUsers", JSON.stringify(allUsers));
+    }, [allUsers]);
 
     const validateEmail = (emailValue: string) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,10 +30,10 @@ export const AuthModal = () => {
     const navigate = useNavigate()
 
     const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
 
         const savedUsers = JSON.parse(localStorage.getItem("allUsers") || "[]");
-        // console.log("Шкатулка всіх юзерів:", savedUsers);
-        // console.log("Що вводжу я:", { email, password });
+
         const foundUser = savedUsers.find(
         (user: any) => 
         user.email.trim() === email.trim() && 
@@ -33,14 +41,14 @@ export const AuthModal = () => {
         );
 
         if (foundUser) {
-        localStorage.setItem("userEmail", foundUser.email);
+            localStorage.setItem("userEmail", foundUser.email);
+            localStorage.setItem("userEmail", email);
         navigate("/"); 
         } else {
             alert("Неправильна пошта або пароль! Спочатку зареєструйся.");
             return;
         } 
         
-        e.preventDefault();
         let isValid = true;
 
         if (!email.trim()) {
@@ -72,12 +80,12 @@ export const AuthModal = () => {
     
 
     const handleRegister = async (e: React.FormEvent) => {
+        e.preventDefault();
         const existingUsers = JSON.parse(localStorage.getItem("allUsers") || "[]");
-        const newUser = { email, password };
+        const newUser = { email: email.trim(), password: password.trim(), balance: 0 };
         existingUsers.push(newUser);
         localStorage.setItem("allUsers", JSON.stringify(existingUsers));
 
-        e.preventDefault();
         let isValid = true;
 
         if (!email.trim()) {
@@ -101,6 +109,7 @@ export const AuthModal = () => {
 
         try {
             await dispatch(register({ email, password })).unwrap();
+            localStorage.setItem("userEmail", email);
             navigate('/'); 
         } catch (error) {
             console.error("Помилка реєстрації:", error);

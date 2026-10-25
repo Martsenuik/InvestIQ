@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-    background-image: url("./images/mobileBGexpense2.png");
+    background-image: url("./images/mobileBG.png");
       background-repeat: no-repeat;
       background-position: center bottom;
       background-size: cover;
@@ -22,14 +22,20 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .section {
-    background-image: url("./images/tabletBGauth.png");
+    background-image: url("./images/tabletBG.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
   }
 
 }
 
 @media (min-width: 1025px) {
   .section {
-  background-image: url("./images/compBGauth.png");
+  background-image: url("./images/compBGexpense.png");
+      background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: cover;
   }
 
 }

@@ -11,8 +11,16 @@ export const ExpensesPage = () => {
     const [activeTab, setActiveTab] = useState('outgoing');
     // outgoing, income
     const [transactions, setTransactions] = useState<any[]>([]);
-    const [initialBalance, setInitialBalance] = useState(0);
     const [displayValue, setDisplayValue] = useState('')
+    const [initialBalance, setInitialBalance] = useState(() => {
+      const currentUserEmail = localStorage.getItem("userEmail");
+      if (!currentUserEmail) return 0;
+      const savedUsers = localStorage.getItem("allUsers");
+      if (!savedUsers) return 0;
+      const users = JSON.parse(savedUsers);
+      const currentUser = users.find((user: any) => user.email === currentUserEmail);
+      return currentUser && currentUser.balance !== undefined ? currentUser.balance : 0;
+    });
 
     const totalBalance = initialBalance + transactions.reduce((acc, item) => acc + Number(item.amount), 0);
 
@@ -35,7 +43,7 @@ export const ExpensesPage = () => {
         setMobileStep('main')
     };
     
-const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const rawValue = e.target.value.replace(/\D/g, '');
         if (!rawValue) {
             setDisplayValue('');
@@ -44,6 +52,24 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const formatted = Number(rawValue).toLocaleString('uk-UA');
 
         setDisplayValue(formatted);
+    };
+
+    const handleConfirmBalance = () => {
+      const currentUserEmail = localStorage.getItem("userEmail");
+      const savedUsers = localStorage.getItem("allUsers");
+    
+      if (currentUserEmail && savedUsers) {
+        let users = JSON.parse(savedUsers);
+    
+        users = users.map((user: any) => {
+          if (user.email === currentUserEmail) {
+            return { ...user, balance: initialBalance }; 
+          }
+          return user;
+        });
+    
+        localStorage.setItem("allUsers", JSON.stringify(users));
+      }
     };
 
     return (
@@ -79,6 +105,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                             <button 
                                 className="expense-succes-balance" 
                                 disabled={mobileStep === 'main'}
+                                onClick={handleConfirmBalance}
                             >
                                 Підтвердити
                             </button>
