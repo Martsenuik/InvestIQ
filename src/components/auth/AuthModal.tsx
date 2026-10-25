@@ -22,6 +22,24 @@ export const AuthModal = () => {
     const navigate = useNavigate()
 
     const handleLogin = async (e: React.FormEvent) => {
+
+        const savedUsers = JSON.parse(localStorage.getItem("allUsers") || "[]");
+        // console.log("Шкатулка всіх юзерів:", savedUsers);
+        // console.log("Що вводжу я:", { email, password });
+        const foundUser = savedUsers.find(
+        (user: any) => 
+        user.email.trim() === email.trim() && 
+        user.password.trim() === password.trim()
+        );
+
+        if (foundUser) {
+        localStorage.setItem("userEmail", foundUser.email);
+        navigate("/"); 
+        } else {
+            alert("Неправильна пошта або пароль! Спочатку зареєструйся.");
+            return;
+        } 
+        
         e.preventDefault();
         let isValid = true;
 
@@ -54,6 +72,11 @@ export const AuthModal = () => {
     
 
     const handleRegister = async (e: React.FormEvent) => {
+        const existingUsers = JSON.parse(localStorage.getItem("allUsers") || "[]");
+        const newUser = { email, password };
+        existingUsers.push(newUser);
+        localStorage.setItem("allUsers", JSON.stringify(existingUsers));
+
         e.preventDefault();
         let isValid = true;
 
