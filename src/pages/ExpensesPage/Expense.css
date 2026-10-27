@@ -27,7 +27,8 @@
     color: #52555fb3;
     margin-bottom: 10px;
     font-size: 14px;
-        margin-top: 33px;
+    font-weight: bold;
+    margin-top: 33px;
 }
 
 .expense-balance-money,
@@ -56,6 +57,25 @@
         text-transform: uppercase;
         color:rgba(82, 85, 95, 0.7); 
         padding: 17px;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        transition: all 0.5s ease-in-out;
+}
+
+.expense-succes-balance:hover {
+    box-shadow: 0 6px 20px 0 rgba(237, 150, 58, 0.5);
+    transform: translateY(-2px);
+}
+
+.expense-succes-balance:focus-visible {
+    outline: 3px solid #ffb25a;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(237, 150, 58, 0.5);
+}
+
+.expense-succes-balance:active {
+    transform: translateY(1px) scale(0.97);
+    box-shadow: 0 2px 8px 0 rgba(237, 150, 58, 0.5);
 }
 
 .welcome-popup-container {
@@ -98,16 +118,14 @@
     display: none;
 }
 
-.transaction-wrapper-mob.visible {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex: 1;
-    width: 100%;
-    /* background-image: url("../../images/mobileBGexpense2.png");
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: cover; */
+
+.transaction-wrapper-mob {
+        display: none;
+}
+
+.transaction-wrapper-mob.step-add-transaction,
+.transaction-wrapper-mob.step-main {
+    display: block;
 }
 
 
@@ -142,15 +160,85 @@ border-right: 2px solid #ffffff;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .expense {
-        background-image: url("../../images/tabletBGexpense.png");
-    }
+    .expense-first-screen {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
+        .expense-outANDinc-btn-box {
+            display: flex !important;
+        }
+
+        .expense-balancce-box { 
+            gap: 20px;
+        }
+
+        .expense-balance-money{
+            border-radius: 20px;
+            width: 140px;
+            box-sizing: border-box;
+            transition: width 0.1s ease;
+        }
+
+        .expense-succes-balance {
+             border-radius: 20px;
+             order: 1;
+        }
+        .expense-go-calcuations {
+            order: 2;
+            padding-left: 60px;
+        }
+
+        .welcome-bubble {
+            min-width: 290px;
+            position: absolute;
+            right: -40px;
+        }
+
+        .expense-outANDinc-btn-box {
+            position: static !important;
+            bottom: auto !important;
+            left: auto !important;
+            width: auto !important;
+            margin-top: 20px !important;
+        }
+
+        
 }
 
 @media (min-width: 1025px) {
-    .expense {
-        background-image: url("../../images/compBGexpense.png");
-    }
+    .expense-first-screen {
+            display: flex !important;
+        }
+    
+        .expense-outANDinc-btn-box {
+            display: flex !important;
+        }
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .expense-outANDinc-btn-box {
+        position: static !important;
+        bottom: auto !important;
+        left: auto !important;
+        width: auto !important;
+        margin-top: 20px !important;
+        order: 1;
+    }
 }

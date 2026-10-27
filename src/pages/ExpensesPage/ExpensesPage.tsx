@@ -122,8 +122,8 @@ export const ExpensesPage = () => {
                     )}
                 </>
             )}
-            {mobileStep !== 'welcome' && (
-                <div className={`transaction-wrapper-mob ${mobileStep !== "welcome" ? "visible" : ""}`}>
+            
+                <div className={`transaction-wrapper-mob step-${mobileStep}`}>
                 
                     <TransactionTab
                         type={activeTab}
@@ -136,7 +136,7 @@ export const ExpensesPage = () => {
                         initialBalance={initialBalance}
                     />
                 </div>
-            )}
+
  {mobileStep !== "add-transaction" && (
         <div className="expense-outANDinc-btn-box">
           <NavLink

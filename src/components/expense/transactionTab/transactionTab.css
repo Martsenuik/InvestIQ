@@ -230,6 +230,11 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+.transaction-wrapper-mob {
+    display: block !important;
+    width: 100%;
+    margin-top: 40px;
+  }
   .transaction-tab-container {
     max-width: 704px;
     margin: 0 auto;
@@ -241,6 +246,10 @@
   .transaction-tab-1and2{
       box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
       border-radius: 30px 30px 30px 30px;
+  }
+
+  .btn-arrow{
+        display: none;
   }
 
   .form-wrapper {
@@ -255,6 +264,8 @@
     border-radius: 30px 30px 0 0 ;
   }
 
+  
+
   .form-inputs-group-ALL {
     flex-direction: row;
     gap: 0;
@@ -264,11 +275,15 @@
   .form-input-desc {
     width: 250px;
     border-radius: 16px 0 0 16px;
+    border-color: rgba(245, 246, 251, 1);
+    background-color: white;
   }
 
   .form-select-cat {
     width: 170px;
     border-radius: 0;
+    border-color: rgba(245, 246, 251, 1);
+    background-color: white;
   }
 
   .form-amount-wrapper {
@@ -277,7 +292,17 @@
 
   .form-input-amount {
     border-radius: 0 16px 16px 0;
+    border-color: rgba(245, 246, 251, 1);
+     background-color: white;
   }
+
+  .form-input-amount::placeholder {
+    color: #c7ccdc;
+  }
+
+    .form-calc-icon {
+      display: none;
+    }
 
   .form-buttons-group {
     width: auto;
@@ -289,10 +314,10 @@
     align-items: flex-start;
     margin-top: 0;
     display: flex !important;
-      flex-wrap: wrap;
-          background-color: rgb(255, 255, 255);
-            padding: 50px;
-            border-radius: 0 0 30px 30px;
+    flex-wrap: wrap;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    border-radius: 0 0 30px 30px;
   }
 
   .tables-display-flex ul:first-child {
@@ -302,12 +327,17 @@
 
   }
 
-  /* .tables-display-flex ul:last-child {
-    width: 280px;
-  } */
+    .form-buttons-group {
+       margin-top: 0;
+    }
 }
 
 @media (min-width: 1025px) {
+
+.transaction-wrapper-mob {
+    display: block !important;
+    width: 100%;
+  }
   .transaction-tab-container {
     max-width: 1060px;
     margin: 0 auto;
