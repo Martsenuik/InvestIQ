@@ -1,4 +1,4 @@
-import { TransactionTab } from "../../components/expense/transactionTab/TransactionTab";
+import { TransactionTab } from "../../components/expense/transactionTab/transactionTab/TransactionTab";
 
 export const IncomePage = () => {
     return (

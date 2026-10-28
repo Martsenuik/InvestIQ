@@ -1,0 +1,68 @@
+.mobile-transactions-list {
+    max-height: 205px;
+    overflow-y: auto;
+    padding-right: 5px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mobile-transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.mob-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mob-item-title {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.mob-item-subinfo {
+    display: flex;
+    gap: 24px;
+}
+
+.mob-item-date {
+    font-size: 10px
+}
+
+.mob-item-cat {
+    font-size: 10px;
+}
+
+.mob-item-right {
+    display: flex;
+    gap: 5px;
+}
+
+.mob-item-sum {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.red {
+    color: #E53935;
+}
+
+.green {
+    color: #2E7D32;
+}
+
+.mob-item-delete {
+    width: 18px;
+}

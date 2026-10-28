@@ -5,79 +5,6 @@
     align-items: center;
 }
 
-.expense-first-screen{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-.expense-go-calcuations{
-    color: rgba(82, 85, 95, 0.7);
-    font-size: 14px;
-    margin-top: 21px;
-}
-
-.expense-icon-diagram{
-    margin-left: 20px;
-}
-
-.expense-balance-p {
-    color: #52555fb3;
-    margin-bottom: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 33px;
-}
-
-.expense-balance-money,
-.expense-succes-balance {
-    padding: 12px 20px;
-    border-radius: 20px 0 0 20px ;
-    border: 2px solid white;
-    background-color: #F2F5FC;
-    font-size: 14px;
-    outline: none;
-    cursor: pointer;
-    padding-left: 40px;
-}
-
-.expense-balance-money {
-    font-weight: bold;
-    color: #000000;
-}
-
-.expense-balancce-box{
-    display: flex;
-}
-
-.expense-succes-balance {
-        border-radius: 0 20px 20px 0;
-        text-transform: uppercase;
-        color:rgba(82, 85, 95, 0.7); 
-        padding: 17px;
-        cursor: pointer;
-        letter-spacing: 0.5px;
-        transition: all 0.5s ease-in-out;
-}
-
-.expense-succes-balance:hover {
-    box-shadow: 0 6px 20px 0 rgba(237, 150, 58, 0.5);
-    transform: translateY(-2px);
-}
-
-.expense-succes-balance:focus-visible {
-    outline: 3px solid #ffb25a;
-    outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(237, 150, 58, 0.5);
-}
-
-.expense-succes-balance:active {
-    transform: translateY(1px) scale(0.97);
-    box-shadow: 0 2px 8px 0 rgba(237, 150, 58, 0.5);
-}
-
 .welcome-popup-container {
     position: relative;
     display: inline-block;
@@ -129,36 +56,6 @@
 }
 
 
-.expense-outANDinc-btn-box{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    margin-top: auto;
-    text-align: center;
-}
-
-.expense-btn-outgg,
-.expense-btn-incmg {
-    padding: 15px 30px;
-    border: none;
-    background-color: rgba(245, 246, 251, 1);
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    flex:1;
-}
-
-.expense-btn-outgg:active,
-.expense-btn-incmg:active {
-     background-color: rgba(255, 117, 29, 1);
-}
-
-.expense-btn-outgg {
-border-right: 2px solid #ffffff;
-}
-
 @media (min-width: 768px) and (max-width: 1024px) {
     .expense-first-screen {
             display: flex;
@@ -199,11 +96,7 @@ border-right: 2px solid #ffffff;
         }
 
         .expense-outANDinc-btn-box {
-            position: static !important;
-            bottom: auto !important;
-            left: auto !important;
-            width: auto !important;
-            margin-top: 20px !important;
+            display: none;
         }
 
         

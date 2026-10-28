@@ -1,0 +1,150 @@
+.form-inputs-group-ALL {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+}
+
+.form-input-desc,
+.form-select-cat {
+    width: 100%;
+    height: 44px;
+    padding: 0 20px;
+    border: 2px solid #ffffff;
+    background-color: #f5f6fb;
+    border-radius: 16px;
+    font-size: 12px;
+    color: #52555f;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-select-cat {
+    color: #a1a1a1;
+}
+
+.form-select-cat:valid {
+    color: #000000;
+}
+
+.form-select-cat option {
+    color: #52555f;
+}
+
+.form-input-desc {
+    border-radius: 16px 16px 0 0;
+}
+
+.form-select-cat {
+    border-radius: 0 0 16px 16px;
+}
+
+
+.form-input-desc::placeholder,
+.form-input-amount::placeholder,
+.form-select-cat {
+    color: #c7ccdc;
+}
+
+.form-amount-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.form-input-amount {
+    /* width: 100%; */
+    height: 44px;
+    padding: 0 12px 0 4px;
+    border: 2px solid #ffffff;
+    background-color: #f5f6fb;
+    border-radius: 16px;
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.form-input-amount::placeholder {
+    color: black;
+    font-weight: bold;
+}
+
+.form-calc-icon {
+    position: absolute;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) { 
+
+    .form-inputs-group-ALL {
+            flex-direction: row;
+            gap: 0;
+            width: auto;
+        }
+    
+        .form-input-desc {
+            width: 250px;
+            border-radius: 16px 0 0 16px;
+            border-color: rgba(245, 246, 251, 1);
+            background-color: white;
+        }
+    
+        .form-select-cat {
+            width: 170px;
+            border-radius: 0;
+            border-color: rgba(245, 246, 251, 1);
+            background-color: white;
+        }
+    
+        .form-amount-wrapper {
+            width: 125px;
+        }
+    
+        .form-input-amount {
+            border-radius: 0 16px 16px 0;
+            border-color: rgba(245, 246, 251, 1);
+            background-color: white;
+        }
+    
+        .form-input-amount::placeholder {
+            color: #c7ccdc;
+        }
+    
+        .form-calc-icon {
+            display: none;
+        }
+
+@media (min-width: 1025px) {
+    .form-inputs-group-ALL {
+            flex-direction: row;
+            gap: 0;
+            width: auto;
+        }
+    
+        .form-input-desc {
+            width: 290px;
+            border-radius: 16px 0 0 16px;
+        }
+    
+        .form-select-cat {
+            width: 170px;
+            border-radius: 0;
+        }
+    
+        .form-amount-wrapper {
+            width: 110px;
+        }
+    
+        .form-input-amount {
+            border-radius: 0 16px 16px 0;
+        }
+}
+}

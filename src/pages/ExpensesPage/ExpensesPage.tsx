@@ -1,9 +1,10 @@
-import { TransactionTab } from "../../components/expense/transactionTab/TransactionTab"
-import diagram from '../../images/icons/diagram.svg'
+import { OutANDincBtnMOBILE } from "../../components/expense/OutANDinc/OutANDincBtnMOBILE/OutANDincBtnMOBILE"
+import { TransactionTab } from "../../components/expense/transactionTab/transactionTab/TransactionTab"
 import "./Expense.css"
 import { useState } from "react"
+import { OutANDincBtn } from "../../components/expense/OutANDinc/OutANDincBtn/OutANDincBtn"
+import { ExpenseFirstScreen } from "../../components/expense/expense-first-screen/Expense-first-screen"
 
-import { NavLink } from "react-router-dom"
 
 export const ExpensesPage = () => {
     const [mobileStep, setMobileStep] = useState('welcome')   
@@ -74,43 +75,22 @@ export const ExpensesPage = () => {
 
     return (
         <section className="expense">
+            <OutANDincBtn
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            setMobileStep={setMobileStep}
+            />
 
             {mobileStep !== 'add-transaction' && (
                 <>
-                    <div className="expense-first-screen"> 
-                        <p className="expense-go-calcuations">
-                            Перейти до розрахунків 
-                            <span>
-                                <img className="expense-icon-diagram" src={diagram} alt="diagram" />
-                            </span>
-                        </p>
-                        <p className="expense-balance-p">Баланс:</p>
-                        <div className="expense-balancce-box">
-                            <input
-                                type="text"
-                                className="expense-balance-money"
-                                placeholder="00.00 UAH"
-                                onChange={(e) => {
-                                    handleChange(e);
-                                    const rawValue = e.target.value.replace(/\s/g, '');
-                                    setInitialBalance(Number(rawValue) || 0);
-                                }}
-                                readOnly={mobileStep === 'main'}
-                                value={
-                                    mobileStep === 'main' 
-                                        ? Number(totalBalance || 0).toLocaleString('uk-UA') 
-                                        : (initialBalance === 0 ? '' : initialBalance.toLocaleString('uk-UA'))
-                                }
-                            />
-                            <button 
-                                className="expense-succes-balance" 
-                                disabled={mobileStep === 'main'}
-                                onClick={handleConfirmBalance}
-                            >
-                                Підтвердити
-                            </button>
-                        </div>
-                    </div>
+                    <ExpenseFirstScreen
+                        initialBalance={initialBalance}
+                        setInitialBalance={setInitialBalance}
+                        handleChange={handleChange}
+                        handleConfirmBalance={handleConfirmBalance}
+                        totalBalance={totalBalance}
+                        mobileStep={mobileStep}
+                    />
 
                     {initialBalance === 0 && (
                         <div className="welcome-popup-container">
@@ -137,32 +117,13 @@ export const ExpensesPage = () => {
                     />
                 </div>
 
- {mobileStep !== "add-transaction" && (
-        <div className="expense-outANDinc-btn-box">
-          <NavLink
-            to={"/transaction-tab"}
-            className={`expense-btn-outgg ${activeTab === "outgoing" ? "active" : ""}`}
-            onClick={(e) => {
-            e.preventDefault();
-            setActiveTab("outgoing");
-            setMobileStep('add-transaction'); 
-        }}
-          >
-            витрати
-          </NavLink>
-          <NavLink
-            to={"/transaction-tab"}
-            className={`expense-btn-incmg ${activeTab === "income" ? "active" : ""}`}
-            onClick={(e) => {
-            e.preventDefault();
-            setActiveTab("income");
-            setMobileStep('add-transaction'); 
-        }}
-          >
-            дохід
-          </NavLink>
-        </div>
-      )}
+            {mobileStep !== "add-transaction" && (
+                <OutANDincBtnMOBILE
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    setMobileStep={setMobileStep}
+                />
+            )}
         </section>
     )
 }

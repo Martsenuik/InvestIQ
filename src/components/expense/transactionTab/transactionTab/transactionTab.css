@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   box-sizing: border-box;
 }
 
@@ -36,89 +36,7 @@
   margin: 0;
 }
 
-.form-inputs-group-ALL {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 50px;
-}
 
-.form-input-desc,
-.form-select-cat {
-  width: 100%;
-  height: 44px;
-  padding: 0 20px;
-  border: 2px solid #ffffff;
-  background-color: #f5f6fb;
-  border-radius: 16px;
-  font-size: 12px;
-  color: #52555f;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.form-select-cat {
-  color: #a1a1a1;
-}
-
-.form-select-cat:valid {
-  color: #000000;
-}
-
-.form-select-cat option {
-  color: #52555f;
-}
-
-.form-input-desc{
-  border-radius: 16px 16px 0 0;
-}
-
-.form-select-cat{
-  border-radius: 0 0 16px 16px;
-}
-
-
-.form-input-desc::placeholder,
-.form-input-amount::placeholder,
-.form-select-cat {
-  color: #c7ccdc;
-}
-
-.form-amount-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.form-input-amount {
-  /* width: 100%; */
-  height: 44px;
-      padding: 0 12px 0 4px;
-  border: 2px solid #ffffff;
-  background-color: #f5f6fb;
-  border-radius: 16px;
-  font-size: 12px;
-  color: black;
-    font-weight: bold;
-  outline: none;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.form-input-amount::placeholder {
-  color: black;
-  font-weight: bold;
-}
-
-.form-calc-icon {
-  position: absolute;
-  right: 15px;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
 
 .form-buttons-group {
   display: flex;
@@ -153,63 +71,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
-.mobile-transactions-list{
-  max-height: 205px;
-    overflow-y: auto;
-    padding-right: 5px;
-    &::-webkit-scrollbar {
-        display: none;
-      }
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-}
 
-.mobile-transaction-item{
-  display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0;
-    padding: 16px 0;
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-.mob-item-info{
-    display: flex;
-      flex-direction: column;
-      gap: 4px;
-}
-
-.mob-item-title{
-   font-weight: bold;
-   font-size: 13px;
-}
-
-.mob-item-subinfo{
-    display: flex;
-    gap: 24px;
-}
-.mob-item-date{
-   font-size: 10px
-}
-
-.mob-item-cat{
-    font-size: 10px;
-}
-
-.mob-item-right{
-      display: flex;
-        gap: 5px;
-}
-
-.mob-item-sum{
-      font-weight: bold;
-        font-size: 13px;
-}
-
-.mob-item-delete{
-   width: 18px;
-}
 
 
 .tables-display-flex {
@@ -244,7 +106,7 @@
   }
 
   .transaction-tab-1and2{
-      box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+      /* box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2); */
       border-radius: 30px 30px 30px 30px;
   }
 
@@ -264,46 +126,6 @@
     border-radius: 30px 30px 0 0 ;
   }
 
-  
-
-  .form-inputs-group-ALL {
-    flex-direction: row;
-    gap: 0;
-    width: auto;
-  }
-
-  .form-input-desc {
-    width: 250px;
-    border-radius: 16px 0 0 16px;
-    border-color: rgba(245, 246, 251, 1);
-    background-color: white;
-  }
-
-  .form-select-cat {
-    width: 170px;
-    border-radius: 0;
-    border-color: rgba(245, 246, 251, 1);
-    background-color: white;
-  }
-
-  .form-amount-wrapper {
-    width: 125px;
-  }
-
-  .form-input-amount {
-    border-radius: 0 16px 16px 0;
-    border-color: rgba(245, 246, 251, 1);
-     background-color: white;
-  }
-
-  .form-input-amount::placeholder {
-    color: #c7ccdc;
-  }
-
-    .form-calc-icon {
-      display: none;
-    }
-
   .form-buttons-group {
     width: auto;
     gap: 20px;
@@ -315,7 +137,7 @@
     margin-top: 0;
     display: flex !important;
     flex-wrap: wrap;
-    background-color: rgb(255, 255, 255);
+    
     padding: 50px;
     border-radius: 0 0 30px 30px;
   }
@@ -324,6 +146,7 @@
     /* width: 704px; */
     border: 4px solid #f6f7fb;
     border-radius: 10px 10px 0 0;
+    background-color: rgb(255, 255, 255);
 
   }
 
@@ -362,30 +185,6 @@
 
   .form-calendar-wrapper {
     width: auto;
-  }
-
-  .form-inputs-group-ALL {
-    flex-direction: row;
-    gap: 0;
-    width: auto;
-  }
-
-  .form-input-desc {
-    width: 290px;
-    border-radius: 16px 0 0 16px;
-  }
-
-  .form-select-cat {
-    width: 170px;
-    border-radius: 0;
-  }
-
-  .form-amount-wrapper {
-    width: 110px;
-  }
-
-  .form-input-amount {
-    border-radius: 0 16px 16px 0;
   }
 
   .form-buttons-group {

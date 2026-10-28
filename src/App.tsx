@@ -6,7 +6,6 @@ import { ExpensesPage } from "./pages/ExpensesPage/ExpensesPage";
 import { IncomePage } from "./pages/IncomePage/IncomePage"
 import { ReportsPage } from "./pages/ReportsPage/ReportsPage" 
 import { Header } from './components/header/Header';
-import { TransactionTab } from './components/expense/transactionTab/TransactionTab';
 import type { ReactNode } from "react";
 
 
@@ -58,14 +57,6 @@ function App() {
                 element={
                     <PrivateRoute>
                         <ReportsPage />
-                    </PrivateRoute>
-                } 
-            />
-            <Route 
-                path="/transaction-tab" 
-                element={
-                    <PrivateRoute>
-                        <TransactionTab />
                     </PrivateRoute>
                 } 
             />
