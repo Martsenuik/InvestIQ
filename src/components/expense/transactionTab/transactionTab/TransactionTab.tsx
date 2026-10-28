@@ -66,6 +66,12 @@ return (
         </button>
       )}
 
+      <OutANDincBtn
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            setMobileStep={setMobileStep}
+           />
+
         {mobileStep !== 'main' && (
           <div className="form-wrapper">
             {hideDate && (
@@ -74,12 +80,6 @@ return (
                 <p className="form-calendar-date">{today}</p>
               </div>
           )}
-          
-          <OutANDincBtn
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            setMobileStep={setMobileStep}
-           />
 
             <FormInputsGroupALL
               description={description}

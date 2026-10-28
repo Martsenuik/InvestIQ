@@ -122,11 +122,18 @@
             display: none;
         }
 
+    }
+
 @media (min-width: 1025px) {
     .form-inputs-group-ALL {
+            display: flex;
             flex-direction: row;
             gap: 0;
             width: auto;
+        }
+
+        .form-inputs-group{
+            display: flex;
         }
     
         .form-input-desc {
@@ -146,5 +153,8 @@
         .form-input-amount {
             border-radius: 0 16px 16px 0;
         }
+                .form-calc-icon {
+                    display: none;
+                }
 }
-}
+

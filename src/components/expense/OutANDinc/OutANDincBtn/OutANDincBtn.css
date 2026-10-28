@@ -1,23 +1,32 @@
 .expense-outANDinc-btn-box-TABLET {
-
+    margin-bottom: 10px;
 }
 
 .expense-btn-outgg-TABLET,
 .expense-btn-incmg-TABLET {
-    padding: 15px 30px;
+    padding: 11px 26px;
     border: none;
-    background-color: rgba(245, 246, 251, 1);
+    background-color: rgba(250, 251, 253, 1);
     font-weight: bold;
+    font-size: 12px;
     cursor: pointer;
     text-transform: uppercase;
+    border-radius: 20px 20px 0px 0px;
 
 }
 
 .expense-btn-outgg-TABLET:active,
 .expense-btn-incmg-TABLET:active {
-    background-color: rgba(255, 117, 29, 1);
+    color: rgba(255, 117, 29, 1);
 }
 
 .expense-btn-outgg-TABLET {
     border-right: 2px solid #ffffff;
+}
+
+@media (min-width: 1025px) { 
+    .expense-btn-outgg-TABLET,
+        .expense-btn-incmg-TABLET {
+            padding: 12px 46px;
+        }
 }
