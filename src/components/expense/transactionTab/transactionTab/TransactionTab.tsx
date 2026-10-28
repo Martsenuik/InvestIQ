@@ -1,7 +1,7 @@
 import calendar from "../../../../images/icons/calendar.svg";
 import { SummarySection } from "../summarySection/SummarySection";
 import { TransactionTable } from '../transactionTable/TransactionTable';
-import basket from "../../../../images/icons/basket.svg"
+import { OutANDincBtn } from "../../OutANDinc/OutANDincBtn/OutANDincBtn"
 import arrow from '../../../../images/icons/arrow.svg'
 import { useState } from "react";
 import "./transactionTab.css"
@@ -22,17 +22,19 @@ interface TransactionItem {
 
 interface TransactionTabProps {
   type?: string;
-  activeTab?: string;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
   transactions?: any[];
   onDelete?: (id: string) => void;
   hideDate?: boolean;
   onBackWelc?: () => void;
   onAddTransaction?: (transaction: { description: string; category: string; amount: number }) => void;
   mobileStep?: string;
+  setMobileStep: (step: string) => void;
   initialBalance?: number;
 }
 
-export const TransactionTab = ({ type, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep, initialBalance }: TransactionTabProps) => {
+export const TransactionTab = ({ type, activeTab, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep, setActiveTab, setMobileStep }: TransactionTabProps) => {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [amount, setAmount] = useState<string | number>('');
@@ -71,7 +73,13 @@ return (
                 <img src={calendar} alt="calendar" className="form-calendar-icon" />
                 <p className="form-calendar-date">{today}</p>
               </div>
-            )}
+          )}
+          
+          <OutANDincBtn
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            setMobileStep={setMobileStep}
+           />
 
             <FormInputsGroupALL
               description={description}

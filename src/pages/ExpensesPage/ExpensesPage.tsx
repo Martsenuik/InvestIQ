@@ -2,7 +2,6 @@ import { OutANDincBtnMOBILE } from "../../components/expense/OutANDinc/OutANDinc
 import { TransactionTab } from "../../components/expense/transactionTab/transactionTab/TransactionTab"
 import "./Expense.css"
 import { useState } from "react"
-import { OutANDincBtn } from "../../components/expense/OutANDinc/OutANDincBtn/OutANDincBtn"
 import { ExpenseFirstScreen } from "../../components/expense/expense-first-screen/Expense-first-screen"
 
 
@@ -75,11 +74,6 @@ export const ExpensesPage = () => {
 
     return (
         <section className="expense">
-            <OutANDincBtn
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            setMobileStep={setMobileStep}
-            />
 
             {mobileStep !== 'add-transaction' && (
                 <>
@@ -114,6 +108,9 @@ export const ExpensesPage = () => {
                         onAddTransaction={handleAddTransaction}
                         mobileStep={mobileStep}
                         initialBalance={initialBalance}
+                        activeTab={activeTab}      
+                        setActiveTab={setActiveTab}
+                        setMobileStep={setMobileStep}
                     />
                 </div>
 
