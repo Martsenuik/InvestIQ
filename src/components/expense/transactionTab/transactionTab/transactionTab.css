@@ -91,6 +91,10 @@
   width: 100%;
 }
 
+.only-mobile {
+  display: none;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
 .transaction-wrapper-mob {
     display: block !important;
@@ -101,8 +105,9 @@
     max-width: 704px;
     margin: 0 auto;
     padding: 0;
-        align-items: flex-start;
-        gap: 50px;
+    align-items: flex-start;
+    gap: 50px;
+    margin-top: 30px;
   }
 
   .transaction-tab-1and2{
@@ -124,6 +129,10 @@
     display: flex;
     justify-content: center;
     border-radius: 0 30px 0 0 ;
+  }
+
+  .form-calendar-wrapper2 {
+      display: none;
   }
 
   .form-buttons-group {
@@ -152,6 +161,14 @@
     .form-buttons-group {
        margin-top: 0;
     }
+
+    .hide-on-mobile {
+      display: none !important;
+    }
+
+    .only-mobile {
+      display: flex;
+    }
 }
 
 @media (min-width: 1025px) {
@@ -169,7 +186,7 @@
     box-sizing: border-box;
     align-items: flex-end;
     box-shadow: 60px 10px 60px rgba(170, 178, 197, 0.2);
-    
+    margin-top: 40px;
   }
 
   .form-wrapper {

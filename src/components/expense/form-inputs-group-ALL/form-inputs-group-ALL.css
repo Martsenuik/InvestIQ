@@ -153,8 +153,9 @@
         .form-input-amount {
             border-radius: 0 16px 16px 0;
         }
-                .form-calc-icon {
-                    display: none;
-                }
+        
+        .form-calc-icon {
+            display: none;
+        }
 }
 

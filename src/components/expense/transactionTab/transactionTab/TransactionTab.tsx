@@ -72,40 +72,38 @@ return (
             setMobileStep={setMobileStep}
            />
 
-        {mobileStep !== 'main' && (
-          <div className="form-wrapper">
-            {hideDate && (
-              <div className="form-calendar-wrapper">
-                <img src={calendar} alt="calendar" className="form-calendar-icon" />
-                <p className="form-calendar-date">{today}</p>
-              </div>
-          )}
-
-            <FormInputsGroupALL
-              description={description}
-              setDescription={setDescription} 
-              category={category}
-              setCategory={setCategory}
-              amount={amount}
-              setAmount={setAmount}
-            />
-             
-            <div className="form-buttons-group">
-               <button className="form-btn-submit" onClick={handleSubmit}>ввести</button>
-               <button className="form-btn-clear" onClick={handleClear}>Очистити</button>
+      <div className={`form-wrapper ${mobileStep === 'main' ? 'hide-on-mobile' : ''}`}>
+          {!hideDate && ( 
+            <div className="form-calendar-wrapper">
+              <img src={calendar} alt="calendar" className="form-calendar-icon" />
+              <p className="form-calendar-date">{today}</p>
             </div>
+          )}
+        
+          <FormInputsGroupALL
+            description={description}
+            setDescription={setDescription} 
+            category={category}
+            setCategory={setCategory}
+            amount={amount}
+            setAmount={setAmount}
+          />
+          
+          <div className="form-buttons-group">
+            <button className="form-btn-submit" onClick={handleSubmit}>Ввести</button>
+            <button className="form-btn-clear" onClick={handleClear}>Очистити</button>
           </div>
-      )}
+      </div>
          
         {mobileStep === 'main' && (
-          <div className="form-calendar-wrapper" style={{ justifyContent: 'center', margin: '20px 0' }}>
+          <div className="form-calendar-wrapper form-calendar-wrapper2 only-mobile" style={{ justifyContent: 'center', margin: '20px 0' }}>
             <img src={calendar} alt="calendar" className="form-calendar-icon" />
             <p className="form-calendar-date">{today}</p>
           </div>
-         )}
+        )}
 
 
-        {mobileStep === 'main' && (
+      {mobileStep === 'main' && (
         <MobileTransactionsList transactions={transactions || []} onDelete={onDelete || (() => {})} />
       )}
       
@@ -114,7 +112,7 @@ return (
         <div className="tables-display-flex">
              <ul>
              <li>
-               <TransactionTable />
+               <TransactionTable transactions={transactions || []} onDelete={onDelete || (() => {})}/>
              </li>
         </ul>
         

@@ -1,6 +1,7 @@
 import "./expense-first-screen.css"
 import diagram from "../../../images/icons/diagram.svg"
-
+import arrow from "../../../images/icons/arrow.svg"
+import { useState } from "react";
 
 
 interface ExpenseFirstScreenProps {
@@ -20,15 +21,28 @@ export const ExpenseFirstScreen = ({
     totalBalance,
     mobileStep
 }: ExpenseFirstScreenProps) => {
+    const[ pageNow, setPageNow] = useState('welcome') // expense, reports
     
     return (
         <div className="expense-first-screen"> 
-            <p className="expense-go-calcuations">
+            
+            {pageNow !== 'reports' && (
+                <p className="expense-go-calcuations">
                 Перейти до розрахунків 
                 <span>
                     <img className="expense-icon-diagram" src={diagram} alt="diagram" />
                 </span>
             </p>
+             )}
+            
+            {pageNow === 'reports' && ( 
+                <>
+                    <p>Повернутись на головну</p>
+                    <img src={arrow} alt="arrow" />
+                </>
+            )}
+            
+
             <p className="expense-balance-p">Баланс:</p>
             <div className="expense-balancce-box">
                 <input
