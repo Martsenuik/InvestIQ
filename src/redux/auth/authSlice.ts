@@ -8,10 +8,16 @@ interface AuthState {
     isLoggedIn: boolean;
 }
 
+// const initialState: AuthState = {
+//     user: { email: localStorage.getItem("userEmail") || null },
+//     token: localStorage.getItem("token") || null,
+//     isLoggedIn: !!localStorage.getItem("token"),
+// };
+
 const initialState: AuthState = {
     user: { email: localStorage.getItem("userEmail") || null },
-    token: localStorage.getItem("token") || null,
-    isLoggedIn: !!localStorage.getItem("token"),
+    token: sessionStorage.getItem("token") || null,
+    isLoggedIn: !!sessionStorage.getItem("token"),
 };
 
 export const logIn = createAsyncThunk(
@@ -22,7 +28,10 @@ export const logIn = createAsyncThunk(
                 user: { email: credentials.email },
                 token: "mock-token-12345"
             };
-            localStorage.setItem("token", mockResponse.token);
+            // localStorage.setItem("token", mockResponse.token);
+            // localStorage.setItem("userEmail", credentials.email);
+            sessionStorage.setItem("token", mockResponse.token);
+            sessionStorage.setItem("userEmail", credentials.email); 
             localStorage.setItem("userEmail", credentials.email);
             return mockResponse;
         } catch (error: any) {
@@ -39,7 +48,10 @@ export const register = createAsyncThunk(
                 user: { email: credentials.email },
                 token: "mock-token-12345"
             };
-            localStorage.setItem("token", mockResponse.token);
+            // localStorage.setItem("token", mockResponse.token);
+            // localStorage.setItem("userEmail", credentials.email);
+            sessionStorage.setItem("token", mockResponse.token);
+            sessionStorage.setItem("userEmail", credentials.email); // залишаємо або дублюємо
             localStorage.setItem("userEmail", credentials.email);
             return mockResponse;
         } catch (error: any) {
@@ -48,18 +60,28 @@ export const register = createAsyncThunk(
     }
 );
 
+// export const logOut = createAsyncThunk(
+//     'auth/logout',
+//     async (_, thunkAPI) => {
+//         try {
+//             localStorage.removeItem("token");
+//             localStorage.removeItem("userEmail");
+//         } catch (error: any) {
+//             return thunkAPI.rejectWithValue(error.message);
+//         }
+//     }
+// );
 export const logOut = createAsyncThunk(
     'auth/logout',
     async (_, thunkAPI) => {
         try {
-            localStorage.removeItem("token");
-            localStorage.removeItem("userEmail");
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("userEmail");
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
-
 
 const authSlice = createSlice({
     name: 'auth', 
@@ -79,12 +101,19 @@ const authSlice = createSlice({
                 state.isLoggedIn = true;
                 localStorage.setItem("userEmail", action.payload.email);
             })
+            // .addCase(logOut.fulfilled, (state) => {
+            //     state.user = { email: null};
+            //     state.token = null;
+            //     state.isLoggedIn = false;
+            //     localStorage.removeItem("userEmail");
+            //     localStorage.removeItem("token");
+            // })
             .addCase(logOut.fulfilled, (state) => {
                 state.user = { email: null};
                 state.token = null;
                 state.isLoggedIn = false;
-                localStorage.removeItem("userEmail");
-                localStorage.removeItem("token");
+                sessionStorage.removeItem("userEmail");
+                sessionStorage.removeItem("token");
             })
         
     }
