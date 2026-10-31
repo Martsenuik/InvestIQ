@@ -6,18 +6,18 @@ import { ExpensesPage } from "./pages/ExpensesPage/ExpensesPage";
 import { IncomePage } from "./pages/IncomePage/IncomePage"
 import { ReportsPage } from "./pages/ReportsPage/ReportsPage" 
 import { Header } from './components/header/Header';
+import { useSelector } from "react-redux";
+import type { RootState } from "./redux/store";
 import type { ReactNode } from "react";
 
 
 function App() {
   
-  const isAuthenticated = () => {
-    return Boolean(localStorage.getItem("userEmail"));
-  };
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   
   const PrivateRoute = ({ children }: { children: ReactNode }) => {
-    return isAuthenticated() ? children : <Navigate to="/auth" replace />;
-};
+    return isLoggedIn ? children : <Navigate to="/auth" replace />;
+  };
 
   return (
     <>

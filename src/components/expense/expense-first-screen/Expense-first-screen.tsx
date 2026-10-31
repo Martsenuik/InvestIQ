@@ -37,7 +37,7 @@ export const ExpenseFirstScreen = ({
             
             {pageNow === 'reports' && ( 
                 <>
-                    <p>Повернутись на головну</p>
+                <p>Повернутись на головну</p>
                     <img src={arrow} alt="arrow" />
                 </>
             )}
