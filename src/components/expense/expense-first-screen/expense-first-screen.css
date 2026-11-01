@@ -88,7 +88,12 @@
             border-radius: 20px;
             width: 140px;
             box-sizing: border-box;
-            transition: width 0.1s ease;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .expense-balance-money:active,
+        .expense-balance-money:focus {
+            box-shadow: 0 8px 24px rgb(255 125 0 / 82%); 
         }
     
         .expense-succes-balance {
@@ -119,8 +124,13 @@
             border-radius: 20px;
             width: 140px;
             box-sizing: border-box;
-            transition: width 0.1s ease;
-        }
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            }
+            
+            .expense-balance-money:active,
+            .expense-balance-money:focus {
+                box-shadow: 0 8px 24px rgb(255 125 0 / 82%);
+            }
     
         .expense-succes-balance {
             border-radius: 20px;

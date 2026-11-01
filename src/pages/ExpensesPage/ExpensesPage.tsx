@@ -8,8 +8,6 @@ import { ExpenseFirstScreen } from "../../components/expense/expense-first-scree
 export const ExpensesPage = () => {
     const [mobileStep, setMobileStep] = useState('welcome')   
     // welcome, add-transaction, main
-    const [activeTab, setActiveTab] = useState('outgoing');
-    // outgoing, income
     const [transactions, setTransactions] = useState<any[]>([]);
     const [displayValue, setDisplayValue] = useState('')
     const [initialBalance, setInitialBalance] = useState(() => {
@@ -21,23 +19,26 @@ export const ExpensesPage = () => {
       const currentUser = users.find((user: any) => user.email === currentUserEmail);
       return currentUser && currentUser.balance !== undefined ? currentUser.balance : 0;
     });
+    const [transactionType, setTransactionType] = useState('outgoing')
+
+
 
     const totalBalance = initialBalance + transactions.reduce((acc, item) => acc + Number(item.amount), 0);
-
+    const filtredTransactions = transactions.filter(item => item.type === transactionType)
 
     const handleDelete = (id: string) => {
         setTransactions(prevTransactions => prevTransactions.filter(item => (item._id || item.id) !== id));
     };
 
       const handleAddTransaction = (newTransactionData: { description: string; category: string; amount: number }) => {
-    const newTx = {
-      id: Date.now().toString(),
-      date: new Date().toLocaleDateString('uk-UA'),
-      description: newTransactionData.description,
-      category: newTransactionData.category,
-      amount: newTransactionData.amount,
-      type: activeTab, 
-    };
+          const newTx = {
+            id: Date.now().toString(),
+            date: new Date().toLocaleDateString('uk-UA'),
+            description: newTransactionData.description,
+            category: newTransactionData.category,
+            amount: newTransactionData.amount,
+            type: transactionType, 
+          };
 
     setTransactions(prev => [newTx, ...prev]);
         setMobileStep('main')
@@ -75,8 +76,7 @@ export const ExpensesPage = () => {
     return (
         <section className="expense">
 
-            {mobileStep !== 'add-transaction' && (
-                <>
+            <div className={mobileStep === 'add-transaction' ? 'hide-mobile-screen' : ''}>
                     <ExpenseFirstScreen
                         initialBalance={initialBalance}
                         setInitialBalance={setInitialBalance}
@@ -84,7 +84,10 @@ export const ExpensesPage = () => {
                         handleConfirmBalance={handleConfirmBalance}
                         totalBalance={totalBalance}
                         mobileStep={mobileStep}
-                    />
+                        setMobileStep={setMobileStep}
+                        setActiveTab={setTransactionType}
+                />
+            </div>
 
                     {initialBalance === 0 && (
                         <div className="welcome-popup-container">
@@ -94,30 +97,28 @@ export const ExpensesPage = () => {
                             </div>
                         </div>
                     )}
-                </>
-            )}
             
                 <div className={`transaction-wrapper-mob step-${mobileStep}`}>
                 
                     <TransactionTab
-                        type={activeTab}
-                        transactions={transactions}
+                        type={transactionType}
+                        transactions={filtredTransactions}
                         onDelete={handleDelete}
                         hideDate={true}
                         onBackWelc={() => setMobileStep('welcome')}
                         onAddTransaction={handleAddTransaction}
                         mobileStep={mobileStep}
                         initialBalance={initialBalance}
-                        activeTab={activeTab}      
-                        setActiveTab={setActiveTab}
+                        activeTab={transactionType}      
+                        setActiveTab={setTransactionType}
                         setMobileStep={setMobileStep}
                     />
                 </div>
 
             {mobileStep !== "add-transaction" && (
                 <OutANDincBtnMOBILE
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
+                    activeTab={transactionType}
+                    setActiveTab={setTransactionType}
                     setMobileStep={setMobileStep}
                 />
             )}

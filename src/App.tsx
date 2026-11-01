@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import { Suspense } from "react";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { ExpensesPage } from "./pages/ExpensesPage/ExpensesPage";
-import { IncomePage } from "./pages/IncomePage/IncomePage"
 import { ReportsPage } from "./pages/ReportsPage/ReportsPage" 
 import { Header } from './components/header/Header';
 import { useSelector } from "react-redux";
@@ -27,12 +26,11 @@ function App() {
             fallback={<div className="loading">Завантаження сторінки...</div>}
           >
             <Header />
-                    <nav >
-        <Link to="/auth">Auth</Link>
-        <Link to="/">Expenses</Link>
-        <Link to="/income">Income</Link>
-        <Link to="/reports">Reports</Link>
-      </nav>
+                <nav>
+                  <Link to="/auth">Auth</Link>
+                  <Link to="/">Expenses</Link>
+                  <Link to="/reports">Reports</Link>
+                </nav>
             <Routes>
             <Route path="/auth" element={<AuthPage />} />
 
@@ -41,14 +39,6 @@ function App() {
                 element={
                     <PrivateRoute>
                         <ExpensesPage />
-                    </PrivateRoute>
-                } 
-            />
-            <Route 
-                path="/income" 
-                element={
-                    <PrivateRoute>
-                        <IncomePage />
                     </PrivateRoute>
                 } 
             />

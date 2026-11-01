@@ -11,11 +11,11 @@ export const TransactionTable = ({ transactions, onDelete }: { transactions: any
   return (
     <div className="transaction-table">
       <ul className="table-header-row">
-        <li className="table-header-cell">дата</li>
         <li className="table-header-cell">опис</li>
+        <li className="table-header-cell">дата</li>
         <li className="table-header-cell">категорія</li>
         <li className="table-header-cell">сума</li>
-        {/* <li className="table-header-cell"></li> */}
+        <li className="table-header-cell action-header"></li>
       </ul>
 
       <ul className="table-body-list">

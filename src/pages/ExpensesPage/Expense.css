@@ -76,5 +76,22 @@
     .expense-first-screen {
             display: flex;
         }
+
+        .welcome-bubble {
+            min-width: 290px;
+            position: absolute;
+            right: -40px;
+        }
+        
+        .expense-outANDinc-btn-box {
+            display: none;
+        }
     
+}
+
+
+@media (min-width: 768px) {
+    .hide-mobile-screen {
+        display: block !important;
+    }
 }

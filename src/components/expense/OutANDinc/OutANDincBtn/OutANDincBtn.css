@@ -1,5 +1,6 @@
 .expense-outANDinc-btn-box-TABLET {
     margin-bottom: 10px;
+    display: none;
 }
 
 .expense-btn-outgg-TABLET,
@@ -15,16 +16,20 @@
 
 }
 
-.expense-btn-outgg-TABLET:active,
-.expense-btn-incmg-TABLET:active {
-    color: rgba(255, 117, 29, 1);
+.expense-btn-outgg-TABLET.active,
+.expense-btn-incmg-TABLET.active {
+    color: rgba(255, 117, 29, 1) !important;
 }
 
 .expense-btn-outgg-TABLET {
     border-right: 2px solid #ffffff;
 }
 
-@media (min-width: 1025px) { 
+@media (min-width: 768px) { 
+    .expense-outANDinc-btn-box-TABLET {
+        display: block;
+    }
+
     .expense-btn-outgg-TABLET,
         .expense-btn-incmg-TABLET {
             padding: 12px 46px;

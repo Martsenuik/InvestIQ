@@ -130,6 +130,8 @@
             flex-direction: row;
             gap: 0;
             width: auto;
+            align-items: center;
+            
         }
 
         .form-inputs-group{
@@ -153,6 +155,9 @@
         .form-input-amount {
             border-radius: 0 16px 16px 0;
         }
+                .form-input-amount::placeholder {
+                    color: #c7ccdc;
+                }
         
         .form-calc-icon {
             display: none;

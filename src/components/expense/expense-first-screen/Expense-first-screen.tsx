@@ -1,6 +1,7 @@
 import "./expense-first-screen.css"
 import diagram from "../../../images/icons/diagram.svg"
 import arrow from "../../../images/icons/arrow.svg"
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -11,6 +12,8 @@ interface ExpenseFirstScreenProps {
     handleConfirmBalance: () => void;
     totalBalance: number;
     mobileStep: string; 
+    setActiveTab: (tab: string) => void;
+    setMobileStep: (step: string) => void;
 }
 
 export const ExpenseFirstScreen = ({
@@ -19,7 +22,9 @@ export const ExpenseFirstScreen = ({
     handleChange,
     handleConfirmBalance,
     totalBalance,
-    mobileStep
+    mobileStep,
+    setActiveTab,
+    setMobileStep
 }: ExpenseFirstScreenProps) => {
     const[ pageNow, setPageNow] = useState('welcome') // expense, reports
     
@@ -27,18 +32,38 @@ export const ExpenseFirstScreen = ({
         <div className="expense-first-screen"> 
             
             {pageNow !== 'reports' && (
-                <p className="expense-go-calcuations">
-                Перейти до розрахунків 
-                <span>
+
+                <NavLink
+                    to={"/reports"}
+                    className="expense-go-calcuations"
+                    onClick={() => {
+                    setActiveTab("outgoing");
+                    setMobileStep('add-transaction'); 
+                    }}
+                >
+                      Перейти до розрахунків
+                    <span>
                     <img className="expense-icon-diagram" src={diagram} alt="diagram" />
                 </span>
-            </p>
+                </NavLink>
+                
              )}
             
             {pageNow === 'reports' && ( 
                 <>
-                <p>Повернутись на головну</p>
-                    <img src={arrow} alt="arrow" />
+                    <NavLink
+                    to={"/"}
+                    className="expense-go-calcuations"
+                    onClick={() => {
+                    setActiveTab("outgoing");
+                    setMobileStep('add-transaction'); 
+                    }}
+                >
+                      Повернутись на головну
+                    <span>
+                     <img src={arrow} alt="arrow" />
+                </span>
+                </NavLink>
                 </>
             )}
             
