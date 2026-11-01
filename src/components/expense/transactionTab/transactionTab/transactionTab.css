@@ -223,14 +223,9 @@
     
   }
 
-  .tables-display-flex ul:first-child {
+  .transaction-table {
     width: 740px;
-
   }
-
-  /* .tables-display-flex ul:last-child {
-    width: 230px;
-  } */
 }
 
 @media (max-width: 767px) {

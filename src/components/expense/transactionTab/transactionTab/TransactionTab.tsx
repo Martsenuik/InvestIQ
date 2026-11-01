@@ -32,9 +32,10 @@ interface TransactionTabProps {
   mobileStep?: string;
   setMobileStep: (step: string) => void;
   initialBalance?: number;
+  summaryData: [string, number][];
 }
 
-export const TransactionTab = ({ type, activeTab, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep, setActiveTab, setMobileStep }: TransactionTabProps) => {
+export const TransactionTab = ({ type, activeTab, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep, summaryData, setActiveTab, setMobileStep }: any) => {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [amount, setAmount] = useState<string | number>('');
@@ -111,14 +112,17 @@ return (
              
         <div className="tables-display-flex">
              <ul>
-             <li>
+             <li className="transaction-table">
                <TransactionTable transactions={transactions || []} onDelete={onDelete || (() => {})}/>
              </li>
         </ul>
         
         <ul>
               <li>
-                <SummarySection />
+                <SummarySection 
+                    summaryData={summaryData} 
+                    activeTab={type}
+                />
               </li>
              </ul> 
         </div>

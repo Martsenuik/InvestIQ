@@ -55,6 +55,10 @@
     display: block;
 }
 
+.expense-top-wrapper.step-add-transaction {
+    display: none !important;
+}
+
 
 @media (min-width: 768px) and (max-width: 1024px) {
     
@@ -91,7 +95,7 @@
 
 
 @media (min-width: 768px) {
-    .hide-mobile-screen {
+    .expense-top-wrapper {
         display: block !important;
     }
 }

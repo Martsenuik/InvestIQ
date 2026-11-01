@@ -2,13 +2,22 @@ import { OutANDincBtnMOBILE } from "../../components/expense/OutANDinc/OutANDinc
 import { TransactionTab } from "../../components/expense/transactionTab/transactionTab/TransactionTab"
 import "./Expense.css"
 import { useState } from "react"
+import { months} from '../../data/months'
 import { ExpenseFirstScreen } from "../../components/expense/expense-first-screen/Expense-first-screen"
 
 
 export const ExpensesPage = () => {
     const [mobileStep, setMobileStep] = useState('welcome')   
     // welcome, add-transaction, main
-    const [transactions, setTransactions] = useState<any[]>([]);
+    const [transactions, setTransactions] = useState<any[]>(() => {
+        const currentUserEmail = localStorage.getItem("userEmail");
+        if (!currentUserEmail) return [];
+        const savedUsers = localStorage.getItem("allUsers");
+        if (!savedUsers) return [];
+        const users = JSON.parse(savedUsers);
+        const currentUser = users.find((user: any) => user.email === currentUserEmail);
+        return currentUser && currentUser.transactions ? currentUser.transactions : [];
+    });
     const [displayValue, setDisplayValue] = useState('')
     const [initialBalance, setInitialBalance] = useState(() => {
       const currentUserEmail = localStorage.getItem("userEmail");
@@ -24,25 +33,68 @@ export const ExpensesPage = () => {
 
 
     const totalBalance = initialBalance + transactions.reduce((acc, item) => acc + Number(item.amount), 0);
-    const filtredTransactions = transactions.filter(item => item.type === transactionType)
+    
+    const filtredTransactions = transactions.filter(item => item.type === transactionType);
+    
+   const getMonthlySummary = () => {
+        const filtred = transactions.filter(item => item.type === transactionType);
+        const summaryMap: { [key: string]: number } = {};
+        
+        filtred.forEach(item => {
+            const parts = item.date ? item.date.split('.') : [];
+            if (parts.length === 3) {
+                const monthsIndex = Number(parts[1]) - 1;
+                const monthName = months[monthsIndex] || 'ІНШИЙ';
 
-    const handleDelete = (id: string) => {
-        setTransactions(prevTransactions => prevTransactions.filter(item => (item._id || item.id) !== id));
+                if (!summaryMap[monthName]) {
+                    summaryMap[monthName] = 0;
+                }
+                summaryMap[monthName] += Number(item.amount);
+            }
+        });
+        return Object.entries(summaryMap); 
     };
 
-      const handleAddTransaction = (newTransactionData: { description: string; category: string; amount: number }) => {
-          const newTx = {
+    const saveTransactionsToStorage = (updatedTransactions: any[]) => {
+        const currentUserEmail = localStorage.getItem("userEmail");
+        const savedUsers = localStorage.getItem("allUsers");
+
+        if (currentUserEmail && savedUsers) {
+            let users = JSON.parse(savedUsers);
+            users = users.map((user: any) => {
+                if (user.email === currentUserEmail) {
+                    return { ...user, transactions: updatedTransactions };
+                }
+                return user;
+            });
+            localStorage.setItem("allUsers", JSON.stringify(users));
+        }
+    };
+
+    const monthlyData = getMonthlySummary();
+
+    const handleDelete = (id: string) => {
+    const updated = transactions.filter(item => (item._id || item.id) !== id);
+    setTransactions(updated);
+    saveTransactionsToStorage(updated);
+    };
+
+    const handleAddTransaction = (newTransactionData: { description: string; category: string; amount: number }) => {
+        const newTx = {
             id: Date.now().toString(),
             date: new Date().toLocaleDateString('uk-UA'),
             description: newTransactionData.description,
             category: newTransactionData.category,
             amount: newTransactionData.amount,
-            type: transactionType, 
-          };
+            type: transactionType,
+        };
 
-    setTransactions(prev => [newTx, ...prev]);
-        setMobileStep('main')
-    };
+        const updated = [newTx, ...transactions];
+        setTransactions(updated);
+        saveTransactionsToStorage(updated);
+        setMobileStep('main');
+
+    }
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const rawValue = e.target.value.replace(/\D/g, '');
@@ -76,7 +128,7 @@ export const ExpensesPage = () => {
     return (
         <section className="expense">
 
-            <div className={mobileStep === 'add-transaction' ? 'hide-mobile-screen' : ''}>
+           <div className={`expense-top-wrapper step-${mobileStep}`}>
                     <ExpenseFirstScreen
                         initialBalance={initialBalance}
                         setInitialBalance={setInitialBalance}
@@ -112,6 +164,7 @@ export const ExpensesPage = () => {
                         activeTab={transactionType}      
                         setActiveTab={setTransactionType}
                         setMobileStep={setMobileStep}
+                        summaryData={monthlyData}
                     />
                 </div>
 

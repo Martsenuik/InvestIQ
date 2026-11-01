@@ -5,12 +5,6 @@
     width: 100%;
 }
 
- ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 .summary-title {
     background-color: #f6f7fb;
     font-size: 12px;
@@ -23,16 +17,32 @@
     border-bottom: 2px solid #ffffff;
 }
 
+.summary-list-container{
+
+}
+
 .summary-lines {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.summary-line {
+.summary-line-item {
     height: 38px;
+    text-align: center;
     background-color: #f6f7fb;
     border-bottom: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.summary-month{
+    font-size: 12px;
+}
+
+.summary-sum {
+    font-size: 13px;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
