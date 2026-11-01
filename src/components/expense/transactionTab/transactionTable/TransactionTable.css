@@ -2,13 +2,6 @@
     width: 100%;
     border: 4px solid #f6f7fb;
 }
-
-.transaction-table ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 .mobile-transaction-item {
     padding: 4px 0;
 }
@@ -100,11 +93,8 @@
 
 .mobile-transaction-item,
 .table-header-row {
-    align-items: center;
-    padding-left: 12px;
-    padding-right: 12px;
-    box-sizing: border-box;
-    min-height: 38px;
+ display: flex;
+ justify-content: space-between;
 }
 
 .mob-item-info,
@@ -148,10 +138,11 @@
 
     .mobile-transaction-item,
     .table-header-row {
-        display: grid !important;
-        grid-template-columns: 75px 1fr 110px 110px 40px !important;
-        align-items: center !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         min-height: 38px;
+        padding: 0 17px !important;
     }
 
     .mob-item-info,
@@ -168,7 +159,6 @@
 
     .mob-item-title {
         grid-column: 2;
-        padding-left: 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -198,4 +188,8 @@
         cursor: pointer;
         padding: 4px;
     }
+
+        .mobile-transaction-item {
+            padding: 15px 17px !important;
+        }
 }
