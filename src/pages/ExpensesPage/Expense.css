@@ -55,8 +55,10 @@
     display: block;
 }
 
-.expense-top-wrapper.step-add-transaction {
-    display: none !important;
+.expense-top-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 
@@ -72,6 +74,12 @@
         .expense-outANDinc-btn-box {
             display: none;
         }
+
+                .expense-top-wrapper {
+                    display: block !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                }
 
         
 }
@@ -90,6 +98,12 @@
         .expense-outANDinc-btn-box {
             display: none;
         }
+
+        .expense-top-wrapper {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
     
 }
 
@@ -97,5 +111,13 @@
 @media (min-width: 768px) {
     .expense-top-wrapper {
         display: block !important;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .expense-top-wrapper.step-add-transaction {
+        display: none !important;
     }
 }
