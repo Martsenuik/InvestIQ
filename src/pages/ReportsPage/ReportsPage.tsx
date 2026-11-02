@@ -9,6 +9,15 @@ import { expensesResult } from "../../data/expensesResult.ts";
 export const ReportsPage = () => {
     const [date, setDate] = useState(new Date());
 
+    const currentUserEmail = localStorage.getItem("userEmail");
+    const savedUsers = localStorage.getItem("allUsers");
+    const users = savedUsers ? JSON.parse(savedUsers) : [];
+    const currentUser = users.find((user: any) => user.email === currentUserEmail);
+    
+    const initialBalance = currentUser && currentUser.balance !== undefined ? currentUser.balance : 0;
+    const transactions = currentUser && currentUser.transactions ? currentUser.transactions : [];
+    const totalBalance = initialBalance + transactions.reduce((acc: number, item: any) => acc + Number(item.amount), 0);
+
     const handlePrev = () => {
         const prevMonth = new Date(date.getFullYear(), date.getMonth() - 1, 1);
         setDate(prevMonth);
@@ -20,7 +29,17 @@ export const ReportsPage = () => {
     }
     return (
         <section className="reports">
-            {/* <ExpenseFirstScreen /> */}
+           <ExpenseFirstScreen
+                initialBalance={totalBalance}
+                setInitialBalance={() => {}} 
+                handleChange={() => {}} 
+                handleConfirmBalance={() => {}} 
+                totalBalance={totalBalance}
+                mobileStep="main"
+                setMobileStep={() => {}}
+                setActiveTab={() => {}}
+                disabled={true} 
+            />
             
             <div className='period-container'>
                 <p className="period-label">Поточний період</p>

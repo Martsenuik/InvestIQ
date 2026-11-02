@@ -14,6 +14,7 @@ interface ExpenseFirstScreenProps {
     mobileStep: string; 
     setActiveTab: (tab: string) => void;
     setMobileStep: (step: string) => void;
+    disabled?: boolean;
 }
 
 export const ExpenseFirstScreen = ({
@@ -24,7 +25,8 @@ export const ExpenseFirstScreen = ({
     totalBalance,
     mobileStep,
     setActiveTab,
-    setMobileStep
+    setMobileStep,
+    disabled = false
 }: ExpenseFirstScreenProps) => {
     const[ pageNow, setPageNow] = useState('welcome') // expense, reports
     
@@ -80,6 +82,7 @@ export const ExpenseFirstScreen = ({
                         setInitialBalance(Number(rawValue) || 0);
                     }}
                     readOnly={mobileStep === 'main'}
+                    disabled={disabled}
                     value={
                         mobileStep === 'main' 
                             ? Number(totalBalance || 0).toLocaleString('uk-UA') 
