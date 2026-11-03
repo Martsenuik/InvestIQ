@@ -8,16 +8,10 @@ interface AuthState {
     isLoggedIn: boolean;
 }
 
-// const initialState: AuthState = {
-//     user: { email: localStorage.getItem("userEmail") || null },
-//     token: localStorage.getItem("token") || null,
-//     isLoggedIn: !!localStorage.getItem("token"),
-// };
-
 const initialState: AuthState = {
     user: { email: localStorage.getItem("userEmail") || null },
-    token: sessionStorage.getItem("token") || null,
-    isLoggedIn: !!sessionStorage.getItem("token"),
+    token: localStorage.getItem("token") || null,
+    isLoggedIn: !!localStorage.getItem("token"),
 };
 
 export const logIn = createAsyncThunk(
@@ -28,10 +22,7 @@ export const logIn = createAsyncThunk(
                 user: { email: credentials.email },
                 token: "mock-token-12345"
             };
-            // localStorage.setItem("token", mockResponse.token);
-            // localStorage.setItem("userEmail", credentials.email);
-            sessionStorage.setItem("token", mockResponse.token);
-            sessionStorage.setItem("userEmail", credentials.email); 
+            localStorage.setItem("token", mockResponse.token);
             localStorage.setItem("userEmail", credentials.email);
             return mockResponse;
         } catch (error: any) {
@@ -48,10 +39,7 @@ export const register = createAsyncThunk(
                 user: { email: credentials.email },
                 token: "mock-token-12345"
             };
-            // localStorage.setItem("token", mockResponse.token);
-            // localStorage.setItem("userEmail", credentials.email);
-            sessionStorage.setItem("token", mockResponse.token);
-            sessionStorage.setItem("userEmail", credentials.email); // залишаємо або дублюємо
+            localStorage.setItem("token", mockResponse.token);
             localStorage.setItem("userEmail", credentials.email);
             return mockResponse;
         } catch (error: any) {
@@ -60,23 +48,12 @@ export const register = createAsyncThunk(
     }
 );
 
-// export const logOut = createAsyncThunk(
-//     'auth/logout',
-//     async (_, thunkAPI) => {
-//         try {
-//             localStorage.removeItem("token");
-//             localStorage.removeItem("userEmail");
-//         } catch (error: any) {
-//             return thunkAPI.rejectWithValue(error.message);
-//         }
-//     }
-// );
 export const logOut = createAsyncThunk(
     'auth/logout',
     async (_, thunkAPI) => {
         try {
-            sessionStorage.removeItem("token");
-            sessionStorage.removeItem("userEmail");
+            localStorage.removeItem("token");
+            localStorage.removeItem("userEmail");
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.message);
         }
@@ -90,24 +67,17 @@ const authSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(register.fulfilled, (state, action: any) => {
-                state.user = action.payload.user;
-                state.token = action.payload.token;
-                state.isLoggedIn = true;
-                localStorage.setItem("userEmail", action.payload.email);
-            })
-            .addCase(logIn.fulfilled, (state, action: any) => {
-                state.user = action.payload.user;
-                state.token = action.payload.token;
-                state.isLoggedIn = true;
-                localStorage.setItem("userEmail", action.payload.email);
-            })
-            // .addCase(logOut.fulfilled, (state) => {
-            //     state.user = { email: null};
-            //     state.token = null;
-            //     state.isLoggedIn = false;
-            //     localStorage.removeItem("userEmail");
-            //     localStorage.removeItem("token");
-            // })
+    state.user = action.payload.user;
+    state.token = action.payload.token;
+    state.isLoggedIn = true;
+    localStorage.setItem("userEmail", action.payload.user.email);
+})
+.addCase(logIn.fulfilled, (state, action: any) => {
+    state.user = action.payload.user;
+    state.token = action.payload.token;
+    state.isLoggedIn = true;
+    localStorage.setItem("userEmail", action.payload.user.email);
+})
             .addCase(logOut.fulfilled, (state) => {
                 state.user = { email: null};
                 state.token = null;

@@ -9,14 +9,20 @@ import { expensesResult } from "../../data/expensesResult.ts";
 export const ReportsPage = () => {
     const [date, setDate] = useState(new Date());
 
-    const currentUserEmail = localStorage.getItem("userEmail");
     const savedUsers = localStorage.getItem("allUsers");
     const users = savedUsers ? JSON.parse(savedUsers) : [];
+    
+    let currentUserEmail = localStorage.getItem("userEmail");
+    if (!currentUserEmail || currentUserEmail === "undefined") {
+        currentUserEmail = users.length > 0 ? users[0].email : null;
+    }
+
     const currentUser = users.find((user: any) => user.email === currentUserEmail);
     
-    const initialBalance = currentUser && currentUser.balance !== undefined ? currentUser.balance : 0;
+    const initialBalance = currentUser && currentUser.balance !== undefined ? Number(currentUser.balance) : 0;
     const transactions = currentUser && currentUser.transactions ? currentUser.transactions : [];
     const totalBalance = initialBalance + transactions.reduce((acc: number, item: any) => acc + Number(item.amount), 0);
+
 
     const handlePrev = () => {
         const prevMonth = new Date(date.getFullYear(), date.getMonth() - 1, 1);
@@ -28,7 +34,8 @@ export const ReportsPage = () => {
         setDate(nextMonth);
     }
     return (
-        <section className="reports">
+    <section className="reports">
+        <div className="reports-top-block">
            <ExpenseFirstScreen
                 initialBalance={totalBalance}
                 setInitialBalance={() => {}} 
@@ -39,6 +46,7 @@ export const ReportsPage = () => {
                 setMobileStep={() => {}}
                 setActiveTab={() => {}}
                 disabled={true} 
+                isReportsPage={true}
             />
             
             <div className='period-container'>
@@ -59,7 +67,9 @@ export const ReportsPage = () => {
                         <img src={rightArrow} alt="right arrow" />
                     </button>
                 </div>
-            </div>
+                </div>
+                
+        </div>
 
             <ul className='results-list'>
                 <li className='result-item-outgg'>Витрати:

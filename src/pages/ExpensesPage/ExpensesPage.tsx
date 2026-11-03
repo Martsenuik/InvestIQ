@@ -137,7 +137,8 @@ export const ExpensesPage = () => {
                         totalBalance={totalBalance}
                         mobileStep={mobileStep}
                         setMobileStep={setMobileStep}
-                        setActiveTab={setTransactionType}
+                    setActiveTab={setTransactionType}
+                    
                 />
             </div>
 

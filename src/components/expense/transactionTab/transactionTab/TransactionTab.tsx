@@ -113,7 +113,11 @@ return (
         <div className="tables-display-flex">
              <ul>
              <li className="transaction-table">
-               <TransactionTable transactions={transactions || []} onDelete={onDelete || (() => {})}/>
+            <TransactionTable
+              transactions={transactions || []}
+              onDelete={onDelete || (() => { })}
+              
+            />
              </li>
         </ul>
         

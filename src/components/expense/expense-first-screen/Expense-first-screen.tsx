@@ -15,6 +15,7 @@ interface ExpenseFirstScreenProps {
     setActiveTab: (tab: string) => void;
     setMobileStep: (step: string) => void;
     disabled?: boolean;
+    isReportsPage?: boolean;
 }
 
 export const ExpenseFirstScreen = ({
@@ -26,47 +27,44 @@ export const ExpenseFirstScreen = ({
     mobileStep,
     setActiveTab,
     setMobileStep,
-    disabled = false
+    disabled = false,
+    isReportsPage = false
 }: ExpenseFirstScreenProps) => {
     const[ pageNow, setPageNow] = useState('welcome') // expense, reports
     
     return (
         <div className="expense-first-screen"> 
             
-            {pageNow !== 'reports' && (
-
+           {!isReportsPage && (
                 <NavLink
                     to={"/reports"}
                     className="expense-go-calcuations"
                     onClick={() => {
-                    setActiveTab("outgoing");
-                    setMobileStep('add-transaction'); 
+                        setActiveTab("outgoing");
+                        setMobileStep('add-transaction'); 
                     }}
                 >
-                      Перейти до розрахунків
+                    Перейти до розрахунків
                     <span>
-                    <img className="expense-icon-diagram" src={diagram} alt="diagram" />
-                </span>
+                        <img className="expense-icon-diagram" src={diagram} alt="diagram" />
+                    </span>
                 </NavLink>
-                
              )}
             
-            {pageNow === 'reports' && ( 
+            {isReportsPage && ( 
                 <>
-                    <NavLink
+                
+                <NavLink
                     to={"/"}
-                    className="expense-go-calcuations"
-                    onClick={() => {
-                    setActiveTab("outgoing");
-                    setMobileStep('add-transaction'); 
-                    }}
-                >
-                      Повернутись на головну
-                    <span>
-                     <img src={arrow} alt="arrow" />
-                </span>
-                </NavLink>
-                </>
+                    className="expense-go-main"
+                    >
+                        <span className="expense-go-main-icon">
+                         <img src={arrow} alt="arrow" />
+                    </span>
+                   <span className="expense-go-main-text"> Повернутись на головну </span>
+                    
+                    </NavLink>
+                    </>
             )}
             
 
@@ -84,10 +82,15 @@ export const ExpenseFirstScreen = ({
                     readOnly={mobileStep === 'main'}
                     disabled={disabled}
                     value={
-                        mobileStep === 'main' 
-                            ? Number(totalBalance || 0).toLocaleString('uk-UA') 
-                            : (initialBalance === 0 ? '' : initialBalance.toLocaleString('uk-UA'))
-                    }
+    disabled || mobileStep === 'main' 
+        ? Number(totalBalance || 0).toLocaleString('uk-UA') 
+        : (initialBalance === 0 ? '' : initialBalance.toLocaleString('uk-UA'))
+}
+                    // value={
+                    //     mobileStep === 'main' 
+                    //         ? Number(totalBalance || 0).toLocaleString('uk-UA') 
+                    //         : (initialBalance === 0 ? '' : initialBalance.toLocaleString('uk-UA'))
+                    // }
                 />
                 <button 
                     className="expense-succes-balance" 

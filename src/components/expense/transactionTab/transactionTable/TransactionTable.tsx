@@ -1,7 +1,10 @@
 import basket from "../../../../images/icons/deleteIcon.svg";
+import { formatNumber } from "../../../../helperFunctions/formatNumber";
 import "./TransactionTable.css";
 
-export const TransactionTable = ({ transactions, onDelete }: { transactions: any[]; onDelete: (id: string) => void }) => {
+export const TransactionTable = ({ transactions, onDelete }: { transactions: any[]; onDelete: (id: string) => void; }) => {
+
+  
   const ITEMS_COUNT = 8;
   
   const safeTransactions = transactions || [];
@@ -19,7 +22,9 @@ export const TransactionTable = ({ transactions, onDelete }: { transactions: any
       </ul>
 
       <ul className="table-body-list">
-        {safeTransactions.map((item) => (
+        {safeTransactions.map((item) => {
+          const formattedAmount = formatNumber(item.amount);
+        return(
           <li key={item._id || item.id} className="mobile-transaction-item">
             <div className="mob-item-info">
               <span className="mob-item-title">{item.description}</span>
@@ -29,8 +34,11 @@ export const TransactionTable = ({ transactions, onDelete }: { transactions: any
               </div>
             </div>
             <div className="mob-item-right">
-              <span className={`mob-item-sum ${item.amount < 0 ? 'red' : 'green'}`}>
-                {item.amount} грн.
+              <span
+                className={`mob-item-sum ${item.amount < 0 ? 'red' : 'green'}`}
+
+              >
+                {formattedAmount} грн.
               </span>
               <button 
                 className="mob-item-delete" 
@@ -40,8 +48,9 @@ export const TransactionTable = ({ transactions, onDelete }: { transactions: any
                 <img src={basket} alt="basket" />
               </button>
             </div>
-          </li>
-        ))}
+        </li>
+        )
+        })}
 
         {emptyRows.map((_, index) => (
           <li key={`empty-${index}`} className="mobile-transaction-item empty-row">

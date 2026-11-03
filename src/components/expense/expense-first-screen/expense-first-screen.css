@@ -71,6 +71,10 @@
     box-shadow: 0 2px 8px 0 rgba(237, 150, 58, 0.5);
 }
 
+.expense-go-main-text {
+    display: none;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) { 
     .expense-first-screen {
             display: flex;
@@ -105,6 +109,16 @@
             order: 2;
             padding-left: 60px;
         }
+        .expense-go-main {
+            display: flex;
+            order: 0;
+            margin-right: 90px;
+        }
+                .expense-go-main-text {
+                    display: block;
+                }
+
+        
 }
 
 @media (min-width: 1025px) {
@@ -138,9 +152,21 @@
         }
     
         .expense-go-calcuations {
+            display: flex;
             order: 2;
             padding-left: 60px;
         }
+
+                .expense-go-main {
+                    display: flex;
+                    order: 0;
+                    margin-right: 140px;
+                    font-size: 13px;
+                    color: rgba(82, 85, 95, 0.7);
+                }
+                                .expense-go-main-text {
+                                    display: block;
+                                }
 }
 
 
