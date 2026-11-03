@@ -2,6 +2,7 @@ import { OutANDincBtnMOBILE } from "../../components/expense/OutANDinc/OutANDinc
 import { TransactionTab } from "../../components/expense/transactionTab/transactionTab/TransactionTab"
 import "./Expense.css"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { months} from '../../data/months'
 import { ExpenseFirstScreen } from "../../components/expense/expense-first-screen/Expense-first-screen"
 
@@ -29,6 +30,17 @@ export const ExpensesPage = () => {
       return currentUser && currentUser.balance !== undefined ? currentUser.balance : 0;
     });
     const [transactionType, setTransactionType] = useState('outgoing')
+
+    const navigate = useNavigate();
+    const handleGoToReports = () => {
+        navigate("/reports", { 
+            state: { 
+                // monthlyData, 
+                transactions, 
+                totalBalance 
+            } 
+        });
+    };
 
 
 
@@ -138,6 +150,7 @@ export const ExpensesPage = () => {
                         mobileStep={mobileStep}
                         setMobileStep={setMobileStep}
                     setActiveTab={setTransactionType}
+                    handleGoToReports={handleGoToReports}
                     
                 />
             </div>

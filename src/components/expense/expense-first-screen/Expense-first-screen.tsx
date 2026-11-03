@@ -16,6 +16,7 @@ interface ExpenseFirstScreenProps {
     setMobileStep: (step: string) => void;
     disabled?: boolean;
     isReportsPage?: boolean;
+    handleGoToReports?: () => void;
 }
 
 export const ExpenseFirstScreen = ({
@@ -28,7 +29,8 @@ export const ExpenseFirstScreen = ({
     setActiveTab,
     setMobileStep,
     disabled = false,
-    isReportsPage = false
+    isReportsPage = false,
+    handleGoToReports
 }: ExpenseFirstScreenProps) => {
     const[ pageNow, setPageNow] = useState('welcome') // expense, reports
     
@@ -42,6 +44,7 @@ export const ExpenseFirstScreen = ({
                     onClick={() => {
                         setActiveTab("outgoing");
                         setMobileStep('add-transaction'); 
+                        handleGoToReports;
                     }}
                 >
                     Перейти до розрахунків

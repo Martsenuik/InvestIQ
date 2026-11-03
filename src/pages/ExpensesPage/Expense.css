@@ -9,6 +9,7 @@
     position: relative;
     display: inline-block;
     margin-top: 15px;
+    z-index: 1000;
 }
 
 .welcome-bubble {

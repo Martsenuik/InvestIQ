@@ -157,16 +157,18 @@
             padding-left: 60px;
         }
 
-                .expense-go-main {
-                    display: flex;
-                    order: 0;
-                    margin-right: 140px;
-                    font-size: 13px;
-                    color: rgba(82, 85, 95, 0.7);
-                }
-                                .expense-go-main-text {
-                                    display: block;
-                                }
+        .expense-go-main {
+            display: flex;
+            gap: 18px;
+            order: 0;
+            margin-right: 140px;
+            font-size: 13px;
+            color: rgba(82, 85, 95, 0.7);
+        }
+
+        .expense-go-main-text {
+            display: block;
+        }
 }
 
 
