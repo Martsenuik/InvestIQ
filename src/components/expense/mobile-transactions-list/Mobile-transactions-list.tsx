@@ -2,12 +2,12 @@ import basket from "../../../images/icons/basket.svg"
 import "./mobile-transactions-list.css"
 
 
-export const MobileTransactionsList = ({ transactions, onDelete }: { transactions: any[]; onDelete: (id: string) => void }) => {
+export const MobileTransactionsList = ({ transactionsUsual, onDelete }: { transactionsUsual: any[]; onDelete: (id: string) => void }) => {
     return (
         <div className="mobile-list-view">
              <ul className="mobile-transactions-list">
-              {transactions && transactions.length > 0 && (
-                transactions.map((item) => (
+              {transactionsUsual && transactionsUsual.length > 0 && (
+                transactionsUsual.map((item) => (
                   <li key={item._id || item.id} className="mobile-transaction-item">
                     <div className="mob-item-info">
                       <span className="mob-item-title">{item.description}</span>

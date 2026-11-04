@@ -8,6 +8,7 @@ import "./reports.css";
 import { formatNumber } from "../../helperFunctions/formatNumber.tsx";
 import { reportsCategoriesOutgg } from '../../data/reportsCategoriesOutgg.ts';
 import { reportsCategoriesIncm } from "../../data/reportsCategoriesIncm.ts";
+import { Chart } from "../../components/report/Chart.tsx";
 
 interface Transaction {
     _id?: string;
@@ -22,6 +23,7 @@ interface Transaction {
 export const ReportsPage = () => {
     const [date, setDate] = useState(new Date());
     const [reportType, setReportType] = useState<'outgoing' | 'incoming'>('outgoing');
+    const [selectedCategory, setSelectedCategory] = useState<string>('Products');
 
     const handleToggleReport = () => {
         setReportType(prev => prev === 'outgoing' ? 'incoming' : 'outgoing');
@@ -53,30 +55,51 @@ export const ReportsPage = () => {
 
     const categoryTotals: { [key: string]: number } = {};
 
+
+    const categoryTranslationMap: { [key: string]: string } = {
+        'Продукти': 'Products',
+        'Алкоголь': 'Alcohol',
+        'Розваги': 'Entertainment',
+        'Здоров’я': 'Health',
+        'Транспорт': 'Transport',
+        'Все для дому': 'Home',
+        'Техніка': 'Machinery',
+        'Комуналка, зв’язок': 'Utility Bills',
+        'спорт, хобі': 'Sport',
+        'навчання': 'Education',
+        'інше': 'Something Else',
+        'ЗП': 'Salary',
+        'Дод. прибуток': 'Add Work'
+    };
+    
     transactions.forEach((item: Transaction) => {
         if (!item.date) return;
         const parts = item.date.split('.');
         if (parts.length === 3) {
             const itemMonthIndex = Number(parts[1]) - 1;
             const itemYear = Number(parts[2]);
-
+    
             if (itemMonthIndex === selectedMonthIndex && itemYear === selectedYear) {
                 const isOutgoing = item.type === 'outgoing';
                 const isIncoming = item.type === 'incoming' || item.type === 'income';
-
+    
                 if (isOutgoing) {
                     totalExpensesForMonth += Number(item.amount);
                 } else if (isIncoming) {
                     totalIncomeForMonth += Number(item.amount);
                 }
-
+    
                 if ((reportType === 'outgoing' && isOutgoing) || (reportType === 'incoming' && isIncoming)) {
-                    const cat = item.category || 'Something Else';
-                    categoryTotals[cat] = (categoryTotals[cat] || 0) + Number(item.amount);
+                    const rawCat = item.category || 'інше';
+                   
+                    const cat = categoryTranslationMap[rawCat] || rawCat;
+                    
+                    categoryTotals[cat] = (categoryTotals[cat] || 0) + Math.abs(Number(item.amount));
                 }
             }
         }
     });
+
 
     const currentCategories = reportType === 'outgoing' ? reportsCategoriesOutgg : reportsCategoriesIncm;
 
@@ -86,6 +109,7 @@ export const ReportsPage = () => {
         icon: cat.icon,
         amount: categoryTotals[cat.name] || 0
     }));
+
       
     const handlePrev = () => {
         const prevMonth = new Date(date.getFullYear(), date.getMonth() - 1, 1);
@@ -96,6 +120,24 @@ export const ReportsPage = () => {
         const nextMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1);
         setDate(nextMonth);
     };
+
+    const categoryTransactions = transactions.filter(
+        (t) =>  t.category === selectedCategory
+    )
+
+    const groupedData = categoryTransactions.reduce((acc, item) => {
+  const desc = item.description || 'Інше';
+  acc[desc] = (acc[desc] || 0) + Math.abs(Number(item.amount));
+  return acc;
+}, {} as { [key: string]: number });
+
+
+   const sortedData = Object.entries(groupedData)
+  .map(([description, amount]) => ({ description, amount }))
+  .sort((a, b) => b.amount - a.amount);
+
+    const maxAmount = Math.max(...sortedData.map((d) => d.amount), 1);
+
 
     return (
         <section className="reports">
@@ -159,15 +201,21 @@ export const ReportsPage = () => {
                 </div>
             
                 <ul className="expense-results-list">
-                 {currentResultData.map((expense) => (
-                     <li className="expense-results-item" key={expense.id}>
-                         <p className="expense-results-amount">{expense.amount.toFixed(2)}</p>
-                         <img className="expense-results-icon" src={expense.icon} alt={expense.category} />
-                         <p className="expense-results-category">{expense.category}</p>
-                     </li>
-                 ))}
+                    {currentResultData.map((expense) => (
+                        <li className="expense-results-item" key={expense.id} onClick={() => setSelectedCategory(expense.category)}>
+                            <p className="expense-results-amount">{expense.amount.toFixed(2)}</p>
+                            <img className="expense-results-icon" src={expense.icon} alt={expense.category} />
+                            <p className="expense-results-category">{expense.category}</p>
+                        </li>
+                    ))}
                 </ul>
             </div>
+
+            <Chart 
+                transactions={transactions} 
+                selectedCategory={selectedCategory} 
+                reportType={reportType}
+            />
         </section>
     );
 };

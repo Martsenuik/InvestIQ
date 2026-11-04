@@ -168,7 +168,8 @@ export const ExpensesPage = () => {
                 
                     <TransactionTab
                         type={transactionType}
-                        transactions={filtredTransactions}
+                    transactions={filtredTransactions}
+                    transactionsUsual={transactions}
                         onDelete={handleDelete}
                         hideDate={true}
                         onBackWelc={() => setMobileStep('welcome')}

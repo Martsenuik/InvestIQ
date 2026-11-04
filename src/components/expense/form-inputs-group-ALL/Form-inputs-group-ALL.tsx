@@ -26,9 +26,9 @@ export const FormInputsGroupALL = ({ description, setDescription, category, setC
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="" disabled hidden>Категорія товару</option>
+          <option className="form-optonS-cat" value="" disabled hidden>Категорія товару</option>
           {categories.map((cat) => (
-            <option key={cat} value={cat}>
+            <option className="cat-option" key={cat} value={cat}>
               {cat}
             </option>
           ))}

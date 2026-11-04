@@ -25,6 +25,7 @@ interface TransactionTabProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   transactions?: any[];
+  transactionsUsual?: any[];
   onDelete?: (id: string) => void;
   hideDate?: boolean;
   onBackWelc?: () => void;
@@ -35,7 +36,7 @@ interface TransactionTabProps {
   summaryData: [string, number][];
 }
 
-export const TransactionTab = ({ type, activeTab, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep, summaryData, setActiveTab, setMobileStep }: any) => {
+export const TransactionTab = ({ type, activeTab, onDelete, transactions, hideDate, onBackWelc, onAddTransaction, mobileStep, summaryData, setActiveTab, setMobileStep, transactionsUsual }: any) => {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [amount, setAmount] = useState<string | number>('');
@@ -105,7 +106,7 @@ return (
 
 
       {mobileStep === 'main' && (
-        <MobileTransactionsList transactions={transactions || []} onDelete={onDelete || (() => {})} />
+        <MobileTransactionsList transactionsUsual={transactionsUsual || []} onDelete={onDelete || (() => {})} />
       )}
       
     

@@ -75,6 +75,10 @@
     display: none;
 }
 
+.hide-on-mobile{
+    display: none;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) { 
     .expense-first-screen {
             display: flex;
@@ -136,7 +140,6 @@
     
         .expense-balance-money {
             border-radius: 20px;
-            width: 140px;
             box-sizing: border-box;
             transition: box-shadow 0.3s ease, border-color 0.3s ease;
             }

@@ -1,0 +1,25 @@
+.chart-wrapper {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 20px 30px;
+  height: 400px;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+}
+
+.chart-canvas-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 100px;
+}
+
+.chart-empty-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.chart-empty-text {
+  color: #A6ABB9;
+}

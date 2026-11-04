@@ -57,7 +57,7 @@
 @media (min-width: 1025px) {
 
     .reports {
-            padding: 40px 90px 40px 90px;
+            padding: 0 90px 40px 90px;
             display: flex;
             flex-direction: column;
             gap: 30px;

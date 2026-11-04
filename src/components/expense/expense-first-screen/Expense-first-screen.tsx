@@ -96,7 +96,7 @@ export const ExpenseFirstScreen = ({
                     // }
                 />
                 <button 
-                    className="expense-succes-balance" 
+                    className="expense-succes-balance hide-on-mobile" 
                     disabled={mobileStep === 'main'}
                     onClick={handleConfirmBalance}
                 >
