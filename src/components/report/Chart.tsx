@@ -1,6 +1,4 @@
 import './chart.css'
-
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +9,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import './Chart.css';
 
 ChartJS.register(
   CategoryScale,
@@ -132,14 +129,14 @@ export const Chart = ({ transactions, selectedCategory, reportType }: ChartProps
   };
 
   return (
-    <div className="chart-wrapper">
+    <div style={{ background: '#ffffff', borderRadius: '30px', padding: '20px 30px', maxWidth: '1034px', height: '400px', margin: '40px auto', boxShadow: '0px 10px 60px rgba(170, 178, 197, 0.2)' }}>
       {sortedData.length > 0 ? (
-        <div className="chart-canvas-box">
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
           <Bar data={data} options={options} />
         </div>
       ) : (
-        <div className="chart-empty-box">
-          <p className="chart-empty-text">Немає даних для відображення</p>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', color: '#A6ABB9' }}>
+          Немає даних для відображення
         </div>
       )}
     </div>
@@ -160,6 +157,7 @@ export const Chart = ({ transactions, selectedCategory, reportType }: ChartProps
 //   Legend,
 // } from 'chart.js';
 // import { Bar } from 'react-chartjs-2';
+// import './Chart.css';
 
 // ChartJS.register(
 //   CategoryScale,
@@ -175,14 +173,16 @@ export const Chart = ({ transactions, selectedCategory, reportType }: ChartProps
 //   category: string;
 //   amount: number;
 //   date: string;
+//   type: 'outgoing' | 'incoming' | 'income';
 // }
 
 // interface ChartProps {
 //   transactions: Transaction[];
 //   selectedCategory: any;
+//   reportType: 'outgoing' | 'incoming';
 // }
 
-// export const Chart = ({ transactions, selectedCategory }: ChartProps) => {
+// export const Chart = ({ transactions, selectedCategory, reportType }: ChartProps) => {
 //   const categoryTranslationMap: { [key: string]: string } = {
 //     'Products': 'Продукти',
 //     'Alcohol': 'Алкоголь',
@@ -200,6 +200,12 @@ export const Chart = ({ transactions, selectedCategory, reportType }: ChartProps
 //   };
 
 //   const filteredTransactions = transactions.filter((item) => {
+//     const isOutgoing = item.type === 'outgoing';
+//     const isIncoming = item.type === 'incoming' || item.type === 'income';
+
+//     const matchesType = reportType === 'outgoing' ? isOutgoing : isIncoming;
+//     if (!matchesType) return false;
+
 //     const uaCategory = categoryTranslationMap[selectedCategory] || selectedCategory;
 //     return item.category === selectedCategory || item.category === uaCategory;
 //   });
@@ -271,7 +277,7 @@ export const Chart = ({ transactions, selectedCategory, reportType }: ChartProps
 //     },
 //   };
 
-// return (
+//   return (
 //     <div className="chart-wrapper">
 //       {sortedData.length > 0 ? (
 //         <div className="chart-canvas-box">
@@ -285,3 +291,4 @@ export const Chart = ({ transactions, selectedCategory, reportType }: ChartProps
 //     </div>
 //   );
 // };
+

@@ -1,0 +1,69 @@
+
+
+.mobile-chart-container {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mobile-chart-container.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: #A6ABB9;
+    font-size: 14px;
+}
+
+.mobile-chart-item {
+    margin-bottom: 20px;
+}
+
+.mobile-chart-item:last-child {
+    margin-bottom: 0;
+}
+
+.mobile-chart-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #52555F;
+}
+
+.mobile-chart-desc {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.mobile-chart-amount {
+    font-weight: 500;
+}
+
+.mobile-bar-track {
+    width: 100%;
+    height: 15px;
+    background-color: #F5F6FB;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mobile-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.mobile-bar-fill.orange {
+    background-color: #FF751D;
+}
+
+.mobile-bar-fill.cream {
+    background-color: #FFDAC1;
+}
+

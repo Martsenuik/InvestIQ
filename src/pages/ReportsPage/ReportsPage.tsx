@@ -9,6 +9,7 @@ import { formatNumber } from "../../helperFunctions/formatNumber.tsx";
 import { reportsCategoriesOutgg } from '../../data/reportsCategoriesOutgg.ts';
 import { reportsCategoriesIncm } from "../../data/reportsCategoriesIncm.ts";
 import { Chart } from "../../components/report/Chart.tsx";
+import { MobileChart } from "../../components/report/MobileChart/MobileChart.tsx";
 
 interface Transaction {
     _id?: string;
@@ -211,11 +212,19 @@ export const ReportsPage = () => {
                 </ul>
             </div>
 
-            <Chart 
-                transactions={transactions} 
-                selectedCategory={selectedCategory} 
+
+            <div className="desktop-chart-view">
+              <Chart transactions={transactions} selectedCategory={selectedCategory} reportType={reportType} />
+            </div>
+            
+            
+            <div className="mobile-chart-view">
+              <MobileChart
+                transactions={transactions}
+                selectedCategory={selectedCategory}
                 reportType={reportType}
-            />
+              />
+            </div>
         </section>
     );
 };
