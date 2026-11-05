@@ -166,6 +166,32 @@ padding: 10px 30px;
         .mobile-chart-view {
             display: none;
         }
+
+        .reports-top-block {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            
+        }
+
+    .expense-go-main {
+        gap: 20px;
+    }
+
+    .expenses-results-box {
+        background-color: #ffffff;
+        box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.07);
+        padding-bottom: 10px;
+    }
+
+        .expense-results-item {
+            border: none;
+        }
+
+    .expense-results-icon {
+        width: 57px;
+        height: 57px;
+    } 
 }
 
 
@@ -292,6 +318,27 @@ padding: 10px 30px;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            border: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .expense-results-item:active {
+            background-color: #FFF1E5;
+            box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+             border-radius: 20px;
+            
+        }
+
+        .expense-results-amount:active{
+            color: rgba(255, 117, 29, 1);
+        }
+
+        .expense-results-icon:active{
+            color: rgba(255, 117, 29, 1);
+        }
+
+        .expense-results-categor:active{
+            color: rgba(255, 117, 29, 1);
         }
     
         .expense-results-amount {
